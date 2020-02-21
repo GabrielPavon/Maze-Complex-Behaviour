@@ -12,8 +12,8 @@ import Foundation
 typealias Trajectory = [Position]
 
 
-// NOTA PARA GABI:
-// Me he inventado un operador nuevo para calcular la posicion intermedia
+
+// New operator that returns the middle position of two positions
 infix operator +- : AdditionPrecedence
 
 struct Position: Hashable {
@@ -35,12 +35,12 @@ struct Position: Hashable {
         return Position(row: p1.row+p2.row, column: p1.column+p2.column)
     }
       
-    // El operador +- devuelve la posicion intermedia entre p1 y p2.
+    // Returns the middle position of two given positions
     static func +-(p1: Position, p2: Position) -> Position {
         return Position(row: (p1.row+p2.row)/2, column: (p1.column+p2.column)/2)
     }
     
-    // Devuelve una nueva posicion desplazada varias filas y/o columnas
+    // Returns a position with a certain offset
     func moved(rows: Int = 0, columns: Int = 0) -> Position {
         return Position(row: row+rows, column: column+columns)
     }
