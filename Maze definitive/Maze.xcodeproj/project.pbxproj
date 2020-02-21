@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50CB1DD924002EE400F81C26 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DC824002EE300F81C26 /* SlotAction.swift */; };
+		50CB1DDA24002EE400F81C26 /* BufferCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DC924002EE300F81C26 /* BufferCondition.swift */; };
+		50CB1DDB24002EE400F81C26 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DCA24002EE300F81C26 /* Model.swift */; };
+		50CB1DDC24002EE400F81C26 /* Procedural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DCB24002EE300F81C26 /* Procedural.swift */; };
+		50CB1DDD24002EE400F81C26 /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DCC24002EE300F81C26 /* Instantiation.swift */; };
+		50CB1DDE24002EE400F81C26 /* Temporal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DCD24002EE300F81C26 /* Temporal.swift */; };
+		50CB1DDF24002EE400F81C26 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DCE24002EE300F81C26 /* Vision.swift */; };
+		50CB1DE024002EE400F81C26 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DCF24002EE300F81C26 /* Tokenizer.swift */; };
+		50CB1DE124002EE400F81C26 /* SlotCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD024002EE300F81C26 /* SlotCondition.swift */; };
+		50CB1DE224002EE400F81C26 /* BufferAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD124002EE300F81C26 /* BufferAction.swift */; };
+		50CB1DE324002EE400F81C26 /* FocusRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD224002EE300F81C26 /* FocusRing.swift */; };
+		50CB1DE424002EE400F81C26 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD324002EE300F81C26 /* Support.swift */; };
+		50CB1DE524002EE400F81C26 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD424002EE300F81C26 /* Parser.swift */; };
+		50CB1DE624002EE400F81C26 /* Declarative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD524002EE300F81C26 /* Declarative.swift */; };
+		50CB1DE724002EE400F81C26 /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD624002EE300F81C26 /* Chunk.swift */; };
+		50CB1DE824002EE400F81C26 /* Production.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD724002EE300F81C26 /* Production.swift */; };
+		50CB1DE924002EE400F81C26 /* ACTRWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD824002EE300F81C26 /* ACTRWindowView.swift */; };
 		DE0F10D323F5FB8B0035417A /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0F10D223F5FB8B0035417A /* Position.swift */; };
 		DE8AD3A523FED88E0076072D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A423FED88E0076072D /* MainViewController.swift */; };
 		DE8AD3A723FED9190076072D /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A623FED9190076072D /* InstructionsViewController.swift */; };
@@ -22,6 +39,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50CB1DC824002EE300F81C26 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
+		50CB1DC924002EE300F81C26 /* BufferCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferCondition.swift; sourceTree = "<group>"; };
+		50CB1DCA24002EE300F81C26 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		50CB1DCB24002EE300F81C26 /* Procedural.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Procedural.swift; sourceTree = "<group>"; };
+		50CB1DCC24002EE300F81C26 /* Instantiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instantiation.swift; sourceTree = "<group>"; };
+		50CB1DCD24002EE300F81C26 /* Temporal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temporal.swift; sourceTree = "<group>"; };
+		50CB1DCE24002EE300F81C26 /* Vision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
+		50CB1DCF24002EE300F81C26 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
+		50CB1DD024002EE300F81C26 /* SlotCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotCondition.swift; sourceTree = "<group>"; };
+		50CB1DD124002EE300F81C26 /* BufferAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferAction.swift; sourceTree = "<group>"; };
+		50CB1DD224002EE300F81C26 /* FocusRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusRing.swift; sourceTree = "<group>"; };
+		50CB1DD324002EE300F81C26 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
+		50CB1DD424002EE300F81C26 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		50CB1DD524002EE300F81C26 /* Declarative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Declarative.swift; sourceTree = "<group>"; };
+		50CB1DD624002EE300F81C26 /* Chunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
+		50CB1DD724002EE300F81C26 /* Production.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Production.swift; sourceTree = "<group>"; };
+		50CB1DD824002EE300F81C26 /* ACTRWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTRWindowView.swift; sourceTree = "<group>"; };
 		DE0F10D223F5FB8B0035417A /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		DE8AD3A423FED88E0076072D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE8AD3A623FED9190076072D /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +83,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50CB1DC724002EE300F81C26 /* ACTR */ = {
+			isa = PBXGroup;
+			children = (
+				50CB1DC824002EE300F81C26 /* SlotAction.swift */,
+				50CB1DC924002EE300F81C26 /* BufferCondition.swift */,
+				50CB1DCA24002EE300F81C26 /* Model.swift */,
+				50CB1DCB24002EE300F81C26 /* Procedural.swift */,
+				50CB1DCC24002EE300F81C26 /* Instantiation.swift */,
+				50CB1DCD24002EE300F81C26 /* Temporal.swift */,
+				50CB1DCE24002EE300F81C26 /* Vision.swift */,
+				50CB1DCF24002EE300F81C26 /* Tokenizer.swift */,
+				50CB1DD024002EE300F81C26 /* SlotCondition.swift */,
+				50CB1DD124002EE300F81C26 /* BufferAction.swift */,
+				50CB1DD224002EE300F81C26 /* FocusRing.swift */,
+				50CB1DD324002EE300F81C26 /* Support.swift */,
+				50CB1DD424002EE300F81C26 /* Parser.swift */,
+				50CB1DD524002EE300F81C26 /* Declarative.swift */,
+				50CB1DD624002EE300F81C26 /* Chunk.swift */,
+				50CB1DD724002EE300F81C26 /* Production.swift */,
+				50CB1DD824002EE300F81C26 /* ACTRWindowView.swift */,
+			);
+			path = ACTR;
+			sourceTree = "<group>";
+		};
 		F0784FC623F2CDE700645218 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +126,7 @@
 		F0784FD123F2CDE700645218 /* Maze */ = {
 			isa = PBXGroup;
 			children = (
+				50CB1DC724002EE300F81C26 /* ACTR */,
 				F0784FE323F2CE9200645218 /* MyClasses */,
 				F0784FD223F2CDE700645218 /* AppDelegate.swift */,
 				F0784FD423F2CDE700645218 /* ViewController.swift */,
@@ -165,13 +224,30 @@
 			files = (
 				DE8AD3A523FED88E0076072D /* MainViewController.swift in Sources */,
 				F0784FD523F2CDE700645218 /* ViewController.swift in Sources */,
+				50CB1DE824002EE400F81C26 /* Production.swift in Sources */,
+				50CB1DDC24002EE400F81C26 /* Procedural.swift in Sources */,
 				F0784FD323F2CDE700645218 /* AppDelegate.swift in Sources */,
 				F0FEDCC624001E9000FB20C7 /* LoseViewController.swift in Sources */,
+				50CB1DDF24002EE400F81C26 /* Vision.swift in Sources */,
 				DE0F10D323F5FB8B0035417A /* Position.swift in Sources */,
+				50CB1DE024002EE400F81C26 /* Tokenizer.swift in Sources */,
+				50CB1DE624002EE400F81C26 /* Declarative.swift in Sources */,
+				50CB1DDA24002EE400F81C26 /* BufferCondition.swift in Sources */,
+				50CB1DE924002EE400F81C26 /* ACTRWindowView.swift in Sources */,
+				50CB1DE224002EE400F81C26 /* BufferAction.swift in Sources */,
+				50CB1DDD24002EE400F81C26 /* Instantiation.swift in Sources */,
+				50CB1DE424002EE400F81C26 /* Support.swift in Sources */,
+				50CB1DDB24002EE400F81C26 /* Model.swift in Sources */,
 				F0784FED23F2D09A00645218 /* MazeView.swift in Sources */,
+				50CB1DE324002EE400F81C26 /* FocusRing.swift in Sources */,
+				50CB1DE124002EE400F81C26 /* SlotCondition.swift in Sources */,
+				50CB1DE724002EE400F81C26 /* Chunk.swift in Sources */,
+				50CB1DD924002EE400F81C26 /* SlotAction.swift in Sources */,
 				F0784FEB23F2CEDD00645218 /* Player.swift in Sources */,
 				DE8AD3A923FED99D0076072D /* WinViewController.swift in Sources */,
+				50CB1DDE24002EE400F81C26 /* Temporal.swift in Sources */,
 				DE8AD3A723FED9190076072D /* InstructionsViewController.swift in Sources */,
+				50CB1DE524002EE400F81C26 /* Parser.swift in Sources */,
 				F0784FE523F2CEA900645218 /* Maze.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
