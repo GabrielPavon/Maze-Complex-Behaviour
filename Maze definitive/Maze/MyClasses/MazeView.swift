@@ -10,26 +10,25 @@ import UIKit
 
 protocol MazeViewDataSource: class {
     
-    /// Preguntar al Data Source cuantas filas tiene el laberinto a pintar.
+    /// Ask DataSource for the number of rows
     func numberOfRowsFor(_ mazeView: MazeView) -> Int
     
-    /// Preguntar al Data Source cuantas columnas tiene el laberinto a pintar.
+    /// Asks DataSource for the number of columns
     func numberOfColumnsFor(_ mazeView: MazeView) -> Int
     
-    /// Preguntar al Data Source si una celda del tablero es abierta.
+    /// Asks DataSource if the cell at specified position is Open
     func isOpenCellFor(_ mazeView: MazeView, at position: Position) -> Bool
     
-    /// Preguntar al Data Source por la posicion de la celda de comienzo.
+    /// Asks DataSource at which position de start cell is
     func startCellFor(_ mazeView: MazeView) -> Position
     
-    /// Preguntar al Data Source por la posicion de la celda de finalizacion.
+    /// Asks DataSource at which position de finish cell is
     func finishCellFor(_ mazeView: MazeView) -> Position
     
-    // TODO: Implementar Ruta completa no solo ultima posicion
-    /// Preguntar al Data Source la trayectoria por la que ha pasado el jugador.
+    /// Asks DataSource for the trajectory of the player
     func playerTrajectoryFor(_ mazeView: MazeView) -> Trajectory
   
-    /// Preguntar al Data Source la trayectoria por la que ha pasado el computer.
+    /// Asks DataSource for the trajectory of the computer
     func computerTrajectoryFor(_ mazeView: MazeView) -> Trajectory
 }
 
@@ -63,7 +62,7 @@ class MazeView: UIView {
     weak var dataSource: MazeViewDataSource!
 
     #if TARGET_INTERFACE_BUILDER
-    // Fakes usados para pintar el maze en el storyboard
+    // Fakes data used only for the interface builder
     var fakeDataSource = FakeDataSource()
     
     class FakeDataSource: MazeViewDataSource {
@@ -88,13 +87,13 @@ class MazeView: UIView {
         drawPlayers()
     }
     
-    // Pinta a los dos jugadores
+    // Draws both players
     private func drawPlayers() {
         drawTrajectory(dataSource.playerTrajectoryFor(self), color: playerColor, offset: 1)
         drawTrajectory(dataSource.computerTrajectoryFor(self), color: computerColor, offset: -1)
     }
        
-    // Pinta una trayectoria con el color y el offset dado
+    // Draws the trajectory with the given offset
     private func drawTrajectory(_ trajectory: Trajectory, color: UIColor, offset: CGFloat) {
      
         // Oval size
@@ -102,17 +101,17 @@ class MazeView: UIView {
 
         let path = UIBezierPath()
         
-        // Desplazamiento desde origen de celda hasta donde se pinta la trayectoria
+        // Delta movement
         let mv = cellSize/2 + size/2*offset
 
-        // La linea:
+        // The line of the trajectory
         let pos0 = trajectory.first ?? Position.zero
         path.move(to: position2CGPoint(pos0).moved(dx: mv, dy: mv))
         for pos in trajectory {
             path.addLine(to: position2CGPoint(pos).moved(dx: mv, dy: mv))
         }
         
-        // Los puntos:
+        // The dots of the trajectory
         for pos in trajectory {
             if pos == trajectory.last! { size *= 2 }
             let p = position2CGPoint(pos).moved(dx: mv-size/2, dy: mv-size/2)
@@ -125,14 +124,14 @@ class MazeView: UIView {
         path.stroke()
     }
     
-    // Pinta el fondo
+    // Draws background
     private func drawBackground() {
         
-        // Tamaño del maze
+        // Maze size
         let rows = dataSource.numberOfRowsFor(self)
         let columns = dataSource.numberOfColumnsFor(self)
         
-        // Rectangulo de la zona de la view donde pintare en puntos.
+        // Rectanle determining the area to draw in
         let origin = position2CGPoint(Position.zero).moved(dx: CGFloat(-lineWidth/2), dy: CGFloat(-lineWidth/2))
         let size = CGSize(width: cellSize*CGFloat(columns) + CGFloat(lineWidth),
                           height: cellSize*CGFloat(rows) + CGFloat(lineWidth))
@@ -146,10 +145,10 @@ class MazeView: UIView {
     }
     
     
-    // Pinta las celdas del maze
+    // Draws Maze Cells
     private func drawCells() {
         
-        // Tamaño del maze
+        // Maze Size
         let rows = dataSource.numberOfRowsFor(self)
         let columns = dataSource.numberOfColumnsFor(self)
         
@@ -168,7 +167,7 @@ class MazeView: UIView {
         drawCellAt(dataSource.finishCellFor(self), with: finishColor)
     }
     
-    // Dibuja la celda de la posicion indicada.
+    // Draws the cell at the indicated position
     private func drawCellAt(_ pos: Position, with color: UIColor) {
         let path = UIBezierPath(rect: CGRect(origin: position2CGPoint(pos),
                                              size: CGSize(width: cellSize, height: cellSize)))
@@ -177,35 +176,34 @@ class MazeView: UIView {
     }
     
     
-    //-------------
-    // Conversiones de coordenadas de la cell en el maze, a coordenadas en puntos.
-    // La coordenada de una cell es su fila y columna en el maze.
-    // La coordenada en puntos son los pixels que se usan para pintar la cell en la UIView.
+    //------------
+    //Conversion from cell coordinates to pixel coordinates
+    //Cell coordinates are based on row & column
+    //Pixel coordinates are what UI view uses to draw the cells
     //
-    // El area donde se dibuja el maze es la mayor posible manteniendo una relacion de
-    // aspecto que hace que los rectangulos de las cells sean cuadrados y ajustando a los bordes
-    // de la UIView.
+    //The are where the maze is drawn is the biggest possible, while maintining a aspect ratio that makes 
+    //cells be squared and being adjusted to the UIView edges
     //-------------
     
-    // Cuantos puntos ocupa una celda
+    // Pixel length of a cell
     private var cellSize: CGFloat = 0
     
-    // Margenes alrededor de la zona de dibujo.
+    // Margins surrounding the drawing (inside the UIView still)
     private var horizontalMargin: CGFloat = 0
     private var verticalMargin: CGFloat = 0
     
-    // Actualiza el valor de cellSize
+    // Updates cellSize
     private func calculateCellSize() {
         
-        // Tamaño del tablero
+        // Board size
         let rows = dataSource.numberOfRowsFor(self)
         let columns = dataSource.numberOfColumnsFor(self)
         
-        // Tamaño en puntos de la zona de la view donde voy a dibujar.
+        // Size of the board in terms of pixels
         let width = bounds.size.width - 2*CGFloat(lineWidth)
         let height = bounds.size.height - 2*CGFloat(lineWidth)
         
-        // Tamaño de una celda en puntos
+        // Size of the cell in pixels
         let cellWidth = width / CGFloat(columns)
         let cellHeight = height / CGFloat(rows)
         
@@ -215,8 +213,8 @@ class MazeView: UIView {
         verticalMargin = (height - cellSize * CGFloat(rows) + 2*CGFloat(lineWidth)) / 2
     }
     
-    
-    // Calcula las coordenadas (x,y) donde empieza la posicion dada.
+    // Returns the coordinates (x,y) where a cell starts
+    // i.e. translates from row column to pixel
     private func position2CGPoint(_ pos: Position) -> CGPoint {
         let x = CGFloat(pos.column) * cellSize + horizontalMargin
         let y = CGFloat(pos.row) * cellSize + verticalMargin
@@ -224,7 +222,7 @@ class MazeView: UIView {
     }
 }
 
-// Añadir nuevos metodos al tipo CGPoint
+// Adding new method to CGPoint class
 extension CGPoint {
     
     func moved(dx: CGFloat, dy: CGFloat) -> CGPoint {
