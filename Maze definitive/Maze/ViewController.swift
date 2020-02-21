@@ -23,33 +23,36 @@ class ViewController: UIViewController, MazeViewDataSource {
         mazeView.setNeedsDisplay()
     }
     
-    
+    /*
+    This part of the code handles the Pan gesture, works weirdly while Swiping gesture is also ON
     @IBAction func handlerPanGesture(_ sender: UIPanGestureRecognizer) {
         let p = sender.translation(in: sender.view)
-        let delta: CGFloat = 15  // Sensibilidad - Aumentar para que sea mas lento
+        let delta: CGFloat = 15  // Sensibility
         print("*", p.x, p.y)
         
         if p.x > delta {
-            maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: 2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 2))
             sender.setTranslation(CGPoint.zero, in: sender.view)
             mazeView.setNeedsDisplay()
         } else if p.x < -delta {
-            maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: -2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -2))
             sender.setTranslation(CGPoint.zero, in: sender.view)
             mazeView.setNeedsDisplay()
         } else if p.y > delta {
-            maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows: 2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: 2))
             sender.setTranslation(CGPoint.zero, in: sender.view)
             mazeView.setNeedsDisplay()
         } else if p.y < -delta {
-            maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows: -2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -2))
             sender.setTranslation(CGPoint.zero, in: sender.view)
             mazeView.setNeedsDisplay()
         }
+    
         
         checkIfWin()
         
     }
+    */
     
     @IBAction func handlerSwipeGesture(_ sender: UISwipeGestureRecognizer) {
         
