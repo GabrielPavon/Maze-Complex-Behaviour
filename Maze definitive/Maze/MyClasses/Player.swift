@@ -22,8 +22,8 @@ class Player {
         }
     }
     
-    // Si route no esta vacio, entonces devuelve su ultima posicion.
-    // Si route esta vacio, entonces devuelve (0,0).
+    // If route is not empty, it will return the last position
+    // If empty, returns (0,0)
     func getPos() -> Position {
         return route.last ?? Position.zero
     }
