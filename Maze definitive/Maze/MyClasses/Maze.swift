@@ -10,9 +10,6 @@ import Foundation
 
 class Maze {
     
-    // NOTA PARA GABI:
-    // private(set) significa que no pueden cambiar su valor desde fuera de este fichero.
-    // Pero desde fuera si se puede leer el valor
     private(set) var size = 0
     
     private(set) var walls: [[Bool]]
@@ -34,10 +31,7 @@ class Maze {
         generateWalls()
     }
     
-    // NOTA PARA GABI:
-    // Estos subscript son para leer y para asignar un nuevo valor.
-    
-    // es muro esa posicion?
+    // Returns wether that position is a wall or not
     private(set) subscript(_ row: Int, _ column:Int) -> Bool {
         get { return walls[row][column] }
         set { walls[row][column] = newValue }
@@ -66,35 +60,21 @@ class Maze {
     func inBounds(_ pos: Position ) -> Bool {
         return pos.row <= size && pos.row >= 0 && pos.column <= size && pos.column >= 0
     }
-    
-    func moveRight(forPlayer player: Player) {
-        
-//        let playerPos = player.getPos()
-//
-//        if playerX + 2 > side {
-//            print("Out of Bounds!")
-//        } else if !walls[playerX+1][playerY] {
-//            player.coordinates.append((playerX+2,playerY))
-//        } else {
-//            print("Invalid movement Right!")
-//        }
-    }
-    
+       
     
     private func generateWalls() {
          
-        // Conjunto (Set de Positions) con las posiciones visitadas
+        // Set of the visited positions. Used for the maze generation
         var visited = Set<Position>()
         
         var prevPos = Position.zero
         var newPos = Position.zero
         
-        // TODO: Change the 36 for the proper number calculating number of cells
         let positionsToVisit = Int(pow((Double(size)+1)/2, 2))
         while visited.count < positionsToVisit {
             if !visited.contains(newPos) {
                 visited.insert(newPos)
-                self[newPos] = false   // NOTA PARA GABI: self es para usar los subscripts
+                self[newPos] = false
                 self[prevPos +- newPos] = false
             }
             prevPos = newPos
