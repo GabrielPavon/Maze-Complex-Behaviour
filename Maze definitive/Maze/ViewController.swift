@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, MazeViewDataSource {
-    
+    let model = Global.model
     static let MAZE_SIDE = 5
     
     @IBOutlet weak var mazeView: MazeView!
@@ -18,9 +18,26 @@ class ViewController: UIViewController, MazeViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mazeView.dataSource = self
         mazeView.setNeedsDisplay()
+        
+        if model.loadedModel != "maze" {
+            model.loadedModel = "maze"
+            model.loadModel(fileName: "maze")
+            model.reset()
+        }
+        
+        print("Setting listener for Action")
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receiveAction), name: NSNotification.Name(rawValue: "Action"), object: nil)
+    
+        if model.waitingForAction {
+            receiveAction()
+        }
+    }
+    
+    @objc func receiveAction() {
+        
+        
     }
     
     /*

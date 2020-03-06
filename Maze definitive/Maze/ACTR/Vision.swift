@@ -157,7 +157,7 @@ class Vision {
         for (slot,value) in request.slotvals {
             switch (slot, value.description) {
             case ("kind", _): if vo.visualType != value.description { return false }
-            case ("isa", _), (":nearest", _): break
+            case ("isa", _), (":nearest", _), (":nearest2", _): break
             case (":attended", "nil"): if vo.attended { return false }
             case (":attended", "t"): if !vo.attended { return false }
             case (":attended", "new"): if vo.creationTime < model.time - visualOnsetSpan { return false }
@@ -214,14 +214,85 @@ class Vision {
             visualLocationError = true
             return nil
         }
-        // If we are looking for nearest remove all candidates that are not nearest
-        if request.slotvals[":nearest"] != nil && currentlyAttended != nil {
-            var shortestDistance = visualObjectDistance(currentlyAttended!, candidates[0])
-            for vl in candidates {
-                shortestDistance = min(shortestDistance, visualObjectDistance(currentlyAttended!, vl))
+        // If we are looking for nearest remove all candidates that are not nearest.
+        if request.slotvals[":nearest"] != nil {
+            var toCheck: VisualObject? = nil
+            
+            if let vl = request.slotvals[":nearest"]?.description {
+                let vo = visicon.filter({ $0.visloc != nil && $0.visloc!.name == vl } )
+                if vo.isEmpty {
+                    visualLocationError = true
+                    print("Couldn't find visual-location in visicon")
+                    model.addToTrace(string: "Trying to find visual-location \(vl) but it is empty.")
+                    
+                    return nil
+                }
+                
+                toCheck = vo[0]
+            } else if request.slotvals[":nearest"]?.description == "current" {
+                if currentlyAttended == nil {
+                        visualLocationError = true
+                        print("Couldn't find visual-location in visicon")
+                        model.addToTrace(string: "Trying to find current visual-location, but there is no currently attended visual object.")
+                        
+                        return nil
+                }
+                
+                toCheck = currentlyAttended
             }
-            candidates = candidates.filter({ visualObjectDistance(currentlyAttended!, $0) <= shortestDistance })
+            
+            if toCheck != nil {
+                var shortestDistance = visualObjectDistance(toCheck!, candidates[0])
+                for vl in candidates {
+                    shortestDistance = min(shortestDistance, visualObjectDistance(toCheck!, vl))
+                }
+                candidates = candidates.filter({ visualObjectDistance(toCheck!, $0) <= shortestDistance })
+                
+                if request.slotvals[":nearest2"] != nil {
+                    var shortestDistance = visualObjectDistance(currentlyAttended!, candidates[0])
+                    for vl in candidates {
+                        shortestDistance = min(shortestDistance, visualObjectDistance(currentlyAttended!, vl))
+                    }
+                    candidates = candidates.filter({ visualObjectDistance(currentlyAttended!, $0) <= shortestDistance })
+                }
+            }
         }
+        
+        if request.slotvals[":nearest2"] != nil {
+            var toCheck: VisualObject? = nil
+            
+            if let vl = request.slotvals[":nearest2"]?.description {
+                let vo = visicon.filter({ $0.visloc != nil && $0.visloc!.name == vl } )
+                if vo.isEmpty {
+                    visualLocationError = true
+                    print("Couldn't find visual-location in visicon")
+                    model.addToTrace(string: "Trying to find visual-location \(vl) but it is empty.")
+                    
+                    return nil
+                }
+                
+                toCheck = vo[0]
+            } else if request.slotvals[":nearest2"]?.description == "current" {
+                if currentlyAttended == nil {
+                        visualLocationError = true
+                        print("Couldn't find visual-location in visicon")
+                        model.addToTrace(string: "Trying to find current visual-location, but there is no currently attended visual object.")
+                        
+                        return nil
+                }
+                
+                toCheck = currentlyAttended
+            }
+            
+            if toCheck != nil {
+                var shortestDistance = visualObjectDistance(toCheck!, candidates[0])
+                for vl in candidates {
+                    shortestDistance = min(shortestDistance, visualObjectDistance(toCheck!, vl))
+                }
+                candidates = candidates.filter({ visualObjectDistance(toCheck!, $0) <= shortestDistance })
+            }
+        }
+        
         var slotWithHighestOrLowest: String? = nil
         var lowest = false
         for (slot, value) in request.slotvals {
@@ -234,10 +305,11 @@ class Vision {
                 break
             }
         }
-        if slotWithHighestOrLowest == nil {
-            slotWithHighestOrLowest = "screen-x"
-            lowest = true
-        }
+        // We don't always want the lowest x. We want random if there are multiple.
+//        if slotWithHighestOrLowest == nil {
+//            slotWithHighestOrLowest = "screen-x"
+//            lowest = true
+//        }
         var lhVL: VisualObject = candidates[0]
         for vl in candidates {
             switch (slotWithHighestOrLowest!, lowest) {

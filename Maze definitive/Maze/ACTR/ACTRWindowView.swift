@@ -43,6 +43,10 @@ class ACTRWindowView: UIView {
         if ownObject != [:] {
             result.append(createVisualObject(view: view, s: ownObject))
         }
+        
+        // Shuffle the array so it doesn't have a bias later on.
+        result.shuffle()
+        
         return result
     }
     
