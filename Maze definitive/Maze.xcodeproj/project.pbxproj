@@ -31,6 +31,7 @@
 		DE8AD3A523FED88E0076072D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A423FED88E0076072D /* MainViewController.swift */; };
 		DE8AD3A723FED9190076072D /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A623FED9190076072D /* InstructionsViewController.swift */; };
 		DE8AD3A923FED99D0076072D /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A823FED99D0076072D /* WinViewController.swift */; };
+		F0607C892417AA9D00C61ABF /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0607C882417AA9D00C61ABF /* CellView.swift */; };
 		F0784FD323F2CDE700645218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0784FD223F2CDE700645218 /* AppDelegate.swift */; };
 		F0784FD523F2CDE700645218 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0784FD423F2CDE700645218 /* ViewController.swift */; };
 		F0784FD823F2CDE700645218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0784FD623F2CDE700645218 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		DE8AD3A423FED88E0076072D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE8AD3A623FED9190076072D /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		DE8AD3A823FED99D0076072D /* WinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
+		F0607C882417AA9D00C61ABF /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		F0784FCF23F2CDE700645218 /* Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0784FD223F2CDE700645218 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0784FD423F2CDE700645218 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				F0784FE423F2CEA900645218 /* Maze.swift */,
 				F0784FEA23F2CEDD00645218 /* Player.swift */,
 				F0784FEC23F2D09A00645218 /* MazeView.swift */,
+				F0607C882417AA9D00C61ABF /* CellView.swift */,
 				DE0F10D223F5FB8B0035417A /* Position.swift */,
 			);
 			path = MyClasses;
@@ -256,6 +259,7 @@
 				50CB1DDD24002EE400F81C26 /* Instantiation.swift in Sources */,
 				50CB1DE424002EE400F81C26 /* Support.swift in Sources */,
 				506057C1240FF145009BBDD9 /* Global.swift in Sources */,
+				F0607C892417AA9D00C61ABF /* CellView.swift in Sources */,
 				50CB1DDB24002EE400F81C26 /* Model.swift in Sources */,
 				50C37838240EBED2004150F5 /* Computer.swift in Sources */,
 				F0784FED23F2D09A00645218 /* MazeView.swift in Sources */,

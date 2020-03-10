@@ -42,23 +42,17 @@ class Maze {
         set { walls[position.row][position.column] = newValue }
     }
     
+    
     func movePlayer (_ player: Player, to destine: Position ) {
-        if inBounds(destine) {
-            let intermediatePos = player.getPos() +- destine
-            if !self[intermediatePos] {
-                player.add(intermediatePos)
-                player.add(destine)
-                print("Moving to: \(destine)")
-            } else {
-                print("There is a wall there! \(intermediatePos)")
-            }
+        if inBounds(destine),!self[destine] {
+            player.add(destine)
         } else {
-            print("Invalid Movement, Out of Bounds!")
+            print("Invalid Movement. OOB or Wall")
         }
     }
     
     func inBounds(_ pos: Position ) -> Bool {
-        return pos.row <= size && pos.row >= 0 && pos.column <= size && pos.column >= 0
+        return pos.row < size && pos.row >= 0 && pos.column < size && pos.column >= 0
     }
        
     

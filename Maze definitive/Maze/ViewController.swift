@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, MazeViewDataSource {
     let model = Global.model
-    static let MAZE_SIDE = 5
+    static let MAZE_SIDE = 9
     
     @IBOutlet weak var mazeView: MazeView!
     
@@ -40,48 +40,19 @@ class ViewController: UIViewController, MazeViewDataSource {
         
     }
     
-    /*
-    This part of the code handles the Pan gesture, works weirdly while Swiping gesture is also ON
-    @IBAction func handlerPanGesture(_ sender: UIPanGestureRecognizer) {
-        let p = sender.translation(in: sender.view)
-        let delta: CGFloat = 15  // Sensibility
-        print("*", p.x, p.y)
-        
-        if p.x > delta {
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 2))
-            sender.setTranslation(CGPoint.zero, in: sender.view)
-            mazeView.setNeedsDisplay()
-        } else if p.x < -delta {
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -2))
-            sender.setTranslation(CGPoint.zero, in: sender.view)
-            mazeView.setNeedsDisplay()
-        } else if p.y > delta {
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: 2))
-            sender.setTranslation(CGPoint.zero, in: sender.view)
-            mazeView.setNeedsDisplay()
-        } else if p.y < -delta {
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -2))
-            sender.setTranslation(CGPoint.zero, in: sender.view)
-            mazeView.setNeedsDisplay()
-        }
-    
-        
-        checkIfWin()
-        
-    }
-    */
+
     
     @IBAction func handlerSwipeGesture(_ sender: UISwipeGestureRecognizer) {
         
         switch sender.direction {
         case .down:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows:2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows:1))
         case .left:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -1))
         case .up:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -1))
         case .right:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 2))
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 1))
         default:
             print("Swipe None")
         }
