@@ -80,10 +80,17 @@ class MazeView: UIView {
     }
     #endif
     
+    // Set to false to check the visual objects that Act/R is looking at.
+    @IBInspectable
+    var hiddenActRViews = true
+    
     override func draw(_ rect: CGRect) {
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
         calculateCellSize()
         drawBackground()
-        drawCells()
+        drawCells() // Also draws the necessary sub-UIViews for Act-R
         drawPlayers()
     }
     
@@ -157,6 +164,7 @@ class MazeView: UIView {
                 let p = Position(row: r, column:c)
                 if dataSource.isOpenCellFor(self, at: p) {
                     drawCellAt(p, with: openColor)
+                    
                 } else {
                     drawCellAt(p, with: closedColor)
                 }
@@ -167,12 +175,57 @@ class MazeView: UIView {
         drawCellAt(dataSource.finishCellFor(self), with: finishColor)
     }
     
+    
+    
+    
     // Draws the cell at the indicated position
     private func drawCellAt(_ pos: Position, with color: UIColor) {
-        let path = UIBezierPath(rect: CGRect(origin: position2CGPoint(pos),
-                                             size: CGSize(width: cellSize, height: cellSize)))
+        
+        let path = UIBezierPath(rect: CGRect(origin: position2CGPoint(pos), size: CGSize(width: cellSize, height: cellSize)))
         color.setFill()
         path.fill()
+        
+        // Only draws the open cells (including start and finish)
+        if color != closedColor {
+                drawCellView(pos, with: UIColor.purple)
+        }
+        
+        
+    }
+    
+    // Draws the necessary sub-UIviews for Act-R
+    private func drawCellView(_ pos: Position,with color:UIColor){
+        
+        let view = CellView()
+        
+        updateCellViewInfo(view, pos)
+        
+        view.frame = CGRect(origin: position2CGPoint(pos).moved(dx: cellSize*0.375, dy: cellSize*0.375), size: CGSize(width: cellSize/4, height: cellSize/4))
+        view.backgroundColor = color
+        if hiddenActRViews {
+            view.isHidden = true
+        } else {
+            view.isHidden = false
+            view.drawOpenings(cellSize/4)
+        }
+        
+        self.addSubview(view)
+    }
+    
+    // checks and stores the adjacency values
+    private func updateCellViewInfo (_ view: CellView,_ pos:Position) {
+        if pos.row > 0,dataSource.isOpenCellFor(self, at: pos.moved(rows: -1, columns: 0)) {
+            view.pathUP = true
+       }
+        if pos.column < dataSource.numberOfColumnsFor(self)-1,dataSource.isOpenCellFor(self, at: pos.moved(rows: 0, columns: 1)) {
+            view.pathRight = true
+        }
+        if pos.row < dataSource.numberOfRowsFor(self)-1,dataSource.isOpenCellFor(self, at: pos.moved(rows: 1, columns: 0)) {
+            view.pathDown = true
+        }
+        if pos.column > 0,dataSource.isOpenCellFor(self, at: pos.moved(rows: 0, columns: -1)) {
+            view.pathLeft = true
+        }
     }
     
     

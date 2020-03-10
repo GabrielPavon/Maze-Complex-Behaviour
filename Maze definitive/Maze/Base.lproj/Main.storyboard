@@ -125,12 +125,16 @@
                             </button>
                             <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="waa-Fc-16C" customClass="MazeView" customModule="Maze" customModuleProvider="target">
                                 <rect key="frame" x="20" y="84" width="335" height="491"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="h9r-3A-W5B" appends="YES" id="5QN-GM-bOO"/>
                                     <outletCollection property="gestureRecognizers" destination="uRf-IJ-V6o" appends="YES" id="CLd-Fl-nCR"/>
                                     <outletCollection property="gestureRecognizers" destination="EZK-LL-EJ5" appends="YES" id="YZL-xh-60S"/>
                                     <outletCollection property="gestureRecognizers" destination="wT7-1y-KMT" appends="YES" id="dG1-Rm-D5Y"/>
-                                    <outletCollection property="gestureRecognizers" destination="Kk8-mh-3pj" appends="YES" id="Gob-Jw-lSe"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -173,11 +177,6 @@
                         <action selector="handlerSwipeGesture:" destination="BYZ-38-t0r" id="hcu-JN-0SA"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Kk8-mh-3pj">
-                    <connections>
-                        <action selector="handlerPanGesture:" destination="BYZ-38-t0r" id="nak-Wx-04S"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="914" y="24"/>
         </scene>
