@@ -36,7 +36,18 @@ class ViewController: UIViewController, MazeViewDataSource {
     }
     
     @objc func receiveAction() {
-        
+        switch model!.lastAction(slot: "cmd") {
+            case "up":
+                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows: -1))
+            case "right":
+                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: 1))
+            case "down":
+                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows:1))
+            case "left":
+                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: -1))
+        }
+
+        model!.modifyLastAction(slot: "current", value: maze.computer.getPos().toId())
         
     }
     
@@ -45,14 +56,15 @@ class ViewController: UIViewController, MazeViewDataSource {
     @IBAction func handlerSwipeGesture(_ sender: UISwipeGestureRecognizer) {
         
         switch sender.direction {
-        case .down:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows:1))
-        case .left:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -1))
         case .up:
             maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -1))
         case .right:
             maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 1))
+        case .down:
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows:1))
+        case .left:
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -1))
+        
         default:
             print("Swipe None")
         }
@@ -85,6 +97,7 @@ class ViewController: UIViewController, MazeViewDataSource {
         
     }
     
+
     // MARK: - MazeView DataSource
     
     func numberOfRowsFor(_ mazeView: MazeView) -> Int {

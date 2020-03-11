@@ -88,10 +88,16 @@ class MazeView: UIView {
         for view in self.subviews {
             view.removeFromSuperview()
         }
+
         calculateCellSize()
         drawBackground()
         drawCells() // Also draws the necessary sub-UIViews for Act-R
         drawPlayers()
+
+        for view in self.subviews {
+            view.assignNeighbours(self.subviews)
+        }
+
     }
     
     // Draws both players
@@ -179,6 +185,7 @@ class MazeView: UIView {
     
     
     // Draws the cell at the indicated position
+    // Crates the Act-R sub-UIviews used as input
     private func drawCellAt(_ pos: Position, with color: UIColor) {
         
         let path = UIBezierPath(rect: CGRect(origin: position2CGPoint(pos), size: CGSize(width: cellSize, height: cellSize)))
@@ -187,21 +194,25 @@ class MazeView: UIView {
         
         // Only draws the open cells (including start and finish)
         if color != closedColor {
-                drawCellView(pos, with: UIColor.purple)
+                createCellView(pos, with: UIColor.purple)
         }
         
         
     }
     
     // Draws the necessary sub-UIviews for Act-R
-    private func drawCellView(_ pos: Position,with color:UIColor){
+    private func createCellView(_ pos: Position,with color:UIColor){
         
         let view = CellView()
         
-        updateCellViewInfo(view, pos)
+        updateCellViewPaths(view, pos)
         
+        view.id = pos.toId()
+
         view.frame = CGRect(origin: position2CGPoint(pos).moved(dx: cellSize*0.375, dy: cellSize*0.375), size: CGSize(width: cellSize/4, height: cellSize/4))
         view.backgroundColor = color
+       
+        // Troubleshooting -  Set to false above to see the Act-r sub-UIviews
         if hiddenActRViews {
             view.isHidden = true
         } else {
@@ -212,20 +223,65 @@ class MazeView: UIView {
         self.addSubview(view)
     }
     
-    // checks and stores the adjacency values
-    private func updateCellViewInfo (_ view: CellView,_ pos:Position) {
+    // checks and stores the adjacent paths
+    // assign the type of cell it is (corridor, deadend, corner, intersection)
+    private func updateCellViewPaths (_ view: CellView,_ pos:Position) {
+        
+        var n_openings = 0
+
         if pos.row > 0,dataSource.isOpenCellFor(self, at: pos.moved(rows: -1, columns: 0)) {
             view.pathUP = true
-       }
+            n_openings += 1
+        }
+        
         if pos.column < dataSource.numberOfColumnsFor(self)-1,dataSource.isOpenCellFor(self, at: pos.moved(rows: 0, columns: 1)) {
             view.pathRight = true
+            n_openings += 1
         }
+        
         if pos.row < dataSource.numberOfRowsFor(self)-1,dataSource.isOpenCellFor(self, at: pos.moved(rows: 1, columns: 0)) {
             view.pathDown = true
+            n_openings += 1
         }
+        
         if pos.column > 0,dataSource.isOpenCellFor(self, at: pos.moved(rows: 0, columns: -1)) {
             view.pathLeft = true
+            n_openings += 1
         }
+
+        // Assign the type
+        // TODO: Assign an enum to the types?
+        if n_openings == 1 {
+            if pos == dataSource.startCellFor {
+                view.type = "start"
+            } else if pos == dataSource.finishCellFor {
+                view.type = "finish"
+            } else {
+                view.type = "deadend"
+            }
+        } else if n_openings == 2 {
+            if (view.pathUp && view.pathDown)||(view.pathLeft && view.pathRight) {
+                    view.type = "corridor"
+                } else {
+                    view.type = "corner"
+                }
+        } else if n_openings > 2 {
+            view.type = "intersection"
+        } else {
+            view.type = "bad call: no openings?"
+        }
+    }
+
+    func assignNeighbours() {
+        
+        for view in subviews {
+            let currentX = Double(view.frame.origin.x) 
+            let currentY = Double(view.frame.origin.y)
+
+
+        }
+
+        
     }
     
     
