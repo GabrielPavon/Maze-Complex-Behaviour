@@ -44,5 +44,9 @@ struct Position: Hashable {
     func moved(rows: Int = 0, columns: Int = 0) -> Position {
         return Position(row: row+rows, column: column+columns)
     }
+
+    func toId() -> String {
+        return String(row)+String(column)
+    }
     
 }
