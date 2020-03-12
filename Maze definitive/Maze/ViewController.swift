@@ -19,36 +19,47 @@ class ViewController: UIViewController, MazeViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         mazeView.dataSource = self
-        mazeView.setNeedsDisplay()
+        //mazeView.setNeedsDisplay()
+        
+        mazeView.draw(mazeView.frame)
         
         if model.loadedModel != "maze" {
             model.loadedModel = "maze"
             model.loadModel(fileName: "maze")
             model.reset()
+            model.visual.updateVisicon(items: mazeView.getVisicon())
+            model.visual.setWindow(mazeView)
         }
         
         print("Setting listener for Action")
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receiveAction), name: NSNotification.Name(rawValue: "Action"), object: nil)
-    
-        if model.waitingForAction {
-            receiveAction()
-        }
+        
+        model.run()
     }
     
     @objc func receiveAction() {
-        switch model!.lastAction(slot: "cmd") {
-            case "up":
-                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows: -1))
-            case "right":
-                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: 1))
-            case "down":
-                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows:1))
-            case "left":
-                maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: -1))
+        switch model.lastAction(slot: "cmd") {
+        case "move":
+            switch model.lastAction(slot: "direction") {
+                case "up":
+                    maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows: -1))
+                case "right":
+                    maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: 1))
+                case "down":
+                    maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(rows:1))
+                case "left":
+                    maze.movePlayer(maze.computer, to: maze.computer.getPos().moved(columns: -1))
+                default:
+                    print("why")
+            }
+        default:
+            print("why")
         }
 
-        model!.modifyLastAction(slot: "current", value: maze.computer.getPos().toId())
-        
+        model.modifyLastAction(
+            slot: "current",
+            value: maze.computer.getPos().toId()
+        )
     }
     
 

@@ -1,0 +1,82 @@
+;;; Model for the maze
+;;;
+
+(p backtrack-retrieve
+    =goal>
+        state backtrack
+    =visual>
+        origin =origin
+        left-attended true
+        right-attended true
+        up-attended true
+        down-attended true
+==>
+    +retrieval>
+        id =origin
+)
+
+(p backtrack-move
+    =goal>
+        state backtrack
+    =visual>
+        origin =origin
+        left-attended true
+        right-attended true
+        up-attended true
+        down-attended true
+    =retrieval>
+        id =id
+        screen-pos =pos
+==>
+    +visual>
+        cmd move-attention
+        screen-pos =pos
+    +action>
+        cmd move
+        id =id
+)
+
+(p backtrack-check-left
+    =goal>
+        state backtrack
+    =visual>
+        left-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p backtrack-check-right
+    =goal>
+        state backtrack
+    =visual>
+        right-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+
+(p backtrack-check-up
+    =goal>
+        state backtrack
+    =visual>
+        up-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p backtrack-check-down
+    =goal>
+        state backtrack
+    =visual>
+        down-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)

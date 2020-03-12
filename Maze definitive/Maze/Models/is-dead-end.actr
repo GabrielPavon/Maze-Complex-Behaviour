@@ -1,0 +1,16 @@
+;;; Model for the maze
+;;;
+
+(p is-dead-end
+    =goal>
+        state is-dead-end
+    =visual>
+        left-attended true
+        right-attended true
+        up-attended true
+        down-attended true
+==>
+    =goal>
+        state backtrack
+    =visual>
+)

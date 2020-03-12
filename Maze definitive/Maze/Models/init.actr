@@ -1,0 +1,51 @@
+;;; Model for the maze
+;;;
+
+(add-dm
+   (goal state find-start)
+)
+
+(goal-focus goal)
+
+;; Find the start.
+(p find-start
+    =goal>
+        state find-start
+==>
+    +visual-location>
+        kind start
+    =goal>
+        previous find-start
+        state move-attention
+)
+
+;; Encode start location in imaginal buffer and look for finish.
+(p encode-start-find-finish
+    =goal>
+        state encode-start
+    =visual-location>
+==>
+    +imaginal>
+        start =visual-location
+    +visual-location>
+        kind finish
+    =goal>
+        state encode-finish
+)
+
+;; Encode finish in imaginal buffer.
+(p encode-finish
+    =goal>
+        state encode-finish
+    =visual-location>
+    =imaginal>
+        start =start
+==>
+    +imaginal>
+        start =start
+        finish =visual-location
+    =goal>
+        state find-next
+)
+
+

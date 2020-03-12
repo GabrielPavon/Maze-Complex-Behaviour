@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501DB7262416B250000956AA /* init.actr in Resources */ = {isa = PBXBuildFile; fileRef = 501DB7232416B250000956AA /* init.actr */; };
+		501DB7272416B250000956AA /* determine-path.actr in Resources */ = {isa = PBXBuildFile; fileRef = 501DB7242416B250000956AA /* determine-path.actr */; };
+		501DB7282416B250000956AA /* find-next.actr in Resources */ = {isa = PBXBuildFile; fileRef = 501DB7252416B250000956AA /* find-next.actr */; };
+		501DB72A2416B346000956AA /* move-attention.actr in Resources */ = {isa = PBXBuildFile; fileRef = 501DB7292416B346000956AA /* move-attention.actr */; };
 		506057C1240FF145009BBDD9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506057C0240FF145009BBDD9 /* Global.swift */; };
 		50C37838240EBED2004150F5 /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C37837240EBED2004150F5 /* Computer.swift */; };
 		50CB1DD924002EE400F81C26 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DC824002EE300F81C26 /* SlotAction.swift */; };
@@ -27,6 +31,8 @@
 		50CB1DE824002EE400F81C26 /* Production.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD724002EE300F81C26 /* Production.swift */; };
 		50CB1DE924002EE400F81C26 /* ACTRWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DD824002EE300F81C26 /* ACTRWindowView.swift */; };
 		50CB1DEC24002F8200F81C26 /* maze.actr in Resources */ = {isa = PBXBuildFile; fileRef = 50CB1DEB24002F8200F81C26 /* maze.actr */; };
+		50FFC9312417F3EF001D9924 /* is-dead-end.actr in Resources */ = {isa = PBXBuildFile; fileRef = 50FFC9302417F3EE001D9924 /* is-dead-end.actr */; };
+		50FFC93324180978001D9924 /* backtrack.actr in Resources */ = {isa = PBXBuildFile; fileRef = 50FFC93224180978001D9924 /* backtrack.actr */; };
 		DE0F10D323F5FB8B0035417A /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0F10D223F5FB8B0035417A /* Position.swift */; };
 		DE8AD3A523FED88E0076072D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A423FED88E0076072D /* MainViewController.swift */; };
 		DE8AD3A723FED9190076072D /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AD3A623FED9190076072D /* InstructionsViewController.swift */; };
@@ -43,6 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		501DB7232416B250000956AA /* init.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = init.actr; sourceTree = "<group>"; };
+		501DB7242416B250000956AA /* determine-path.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "determine-path.actr"; sourceTree = "<group>"; };
+		501DB7252416B250000956AA /* find-next.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "find-next.actr"; sourceTree = "<group>"; };
+		501DB7292416B346000956AA /* move-attention.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "move-attention.actr"; sourceTree = "<group>"; };
 		506057C0240FF145009BBDD9 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		50C37837240EBED2004150F5 /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		50CB1DC824002EE300F81C26 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
@@ -63,6 +73,8 @@
 		50CB1DD724002EE300F81C26 /* Production.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Production.swift; sourceTree = "<group>"; };
 		50CB1DD824002EE300F81C26 /* ACTRWindowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACTRWindowView.swift; sourceTree = "<group>"; };
 		50CB1DEB24002F8200F81C26 /* maze.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = maze.actr; sourceTree = "<group>"; };
+		50FFC9302417F3EE001D9924 /* is-dead-end.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "is-dead-end.actr"; sourceTree = "<group>"; };
+		50FFC93224180978001D9924 /* backtrack.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backtrack.actr; sourceTree = "<group>"; };
 		DE0F10D223F5FB8B0035417A /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		DE8AD3A423FED88E0076072D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE8AD3A623FED9190076072D /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +130,12 @@
 		50CB1DEA24002F2C00F81C26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				50FFC93224180978001D9924 /* backtrack.actr */,
+				50FFC9302417F3EE001D9924 /* is-dead-end.actr */,
+				501DB7292416B346000956AA /* move-attention.actr */,
+				501DB7242416B250000956AA /* determine-path.actr */,
+				501DB7252416B250000956AA /* find-next.actr */,
+				501DB7232416B250000956AA /* init.actr */,
 				50CB1DEB24002F8200F81C26 /* maze.actr */,
 			);
 			path = Models;
@@ -230,9 +248,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				501DB7272416B250000956AA /* determine-path.actr in Resources */,
+				50FFC93324180978001D9924 /* backtrack.actr in Resources */,
+				501DB7282416B250000956AA /* find-next.actr in Resources */,
 				50CB1DEC24002F8200F81C26 /* maze.actr in Resources */,
+				50FFC9312417F3EF001D9924 /* is-dead-end.actr in Resources */,
+				501DB7262416B250000956AA /* init.actr in Resources */,
 				F0784FD823F2CDE700645218 /* Main.storyboard in Resources */,
 				F0784FDB23F2CDE700645218 /* LaunchScreen.storyboard in Resources */,
+				501DB72A2416B346000956AA /* move-attention.actr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

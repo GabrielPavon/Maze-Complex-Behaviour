@@ -25,9 +25,9 @@ class Tokenizer
     fileprivate func nextChar() {
      //   println("\(input.isEmpty)")
         if input.isEmpty {
-          c = nil }
-        else {
-        c = input[input.startIndex]
+          c = nil
+        } else {
+            c = input[input.startIndex]
             input = input.substring(from: 1)
             print(c!, terminator: "")
         }
@@ -67,5 +67,9 @@ class Tokenizer
             }
         }
         while (c != nil && (Tokenizer.isWhitespace(c!))) { nextChar() }
+    }
+    
+    func addToInput(_ s: String) {
+        input = input + "\n" + s
     }
 }

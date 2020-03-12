@@ -53,7 +53,7 @@ class ACTRWindowView: UIView {
     func displayFocusRing(vo: VisualObject) {
         if vr == nil {
             vr = FocusRing(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            vr?.isOpaque = false
+            vr?.isOpaque = true
             self.addSubview(vr!)
         }
         if !self.subviews.contains(vr!) {
@@ -63,6 +63,23 @@ class ACTRWindowView: UIView {
         self.setNeedsLayout()
     }
     
+}
+
+extension CellView {
+    override func visiconValue() -> [String:String] {
+        return [
+            "id": self.id,
+            "type": self.type,
+            "up": self.neighbourUp ?? "nil",
+            "down": self.neighbourDown ?? "nil",
+            "left": self.neighbourLeft ?? "nil",
+            "right": self.neighbourRight ?? "nil",
+            "up-attended": String(!self.pathUp),
+            "down-attended": String(!self.pathDown),
+            "left-attended": String(!self.pathLeft),
+            "right-attended": String(!self.pathRight)
+        ]
+    }
 }
 
 extension UIView {

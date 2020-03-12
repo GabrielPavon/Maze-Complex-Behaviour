@@ -124,7 +124,6 @@ class Model {
             action.isRequest = false
         }
         while (true) {
-
             temporal.updateTimer()
             var inst: Instantiation?
             for (_,p) in procedural.productions {
@@ -281,5 +280,9 @@ class Model {
         } else {
             return Value.Text(s)
         }
+    }
+    
+    func addToModelText(_ s: String) {
+        modelText = modelText + "\n" + s
     }
 }

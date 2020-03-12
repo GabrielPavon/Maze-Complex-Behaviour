@@ -13,11 +13,11 @@ class Parser  {
     fileprivate let m: Model
 
 
-init(model: Model, text: String) {
-    m = model
-    t = Tokenizer(s: text)
-    model.modelText = text
-}
+    init(model: Model, text: String) {
+        m = model
+        t = Tokenizer(s: text)
+        model.modelText = text
+    }
     
     enum ParserError: Error {
         case expected(what: String)
@@ -56,6 +56,11 @@ init(model: Model, text: String) {
             try readToken(token: "(")
             try checkEOF()
             switch t.token! {
+            case "load":
+                try nextTokenCheckEOF()
+                try loadSubModel(t.token!)
+                t.nextToken()
+                try readToken(token: ")")
             case "add-dm":
 //                    print("Add-dm")
                     try nextTokenCheckEOF()
@@ -274,5 +279,14 @@ init(model: Model, text: String) {
 
         
     }
-
+    
+    fileprivate func loadSubModel(_ fname: String) throws {
+        let bundle = Bundle.main
+        let path = bundle.path(forResource: fname, ofType: "actr")!
+        
+        let modelText = try! String(contentsOfFile: path, encoding: String.Encoding.utf8)
+        
+        t.addToInput(modelText)
+        m.addToModelText(modelText)
+    }
 }

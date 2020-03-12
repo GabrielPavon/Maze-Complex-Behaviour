@@ -33,7 +33,7 @@ protocol MazeViewDataSource: class {
 }
 
 @IBDesignable
-class MazeView: UIView {
+class MazeView: ACTRWindowView {
         
     @IBInspectable
     var openColor: UIColor! = UIColor.gray
@@ -95,9 +95,10 @@ class MazeView: UIView {
         drawPlayers()
 
         for view in self.subviews {
-            view.assignNeighbours(self.subviews)
+            if let cellView = view as? CellView {
+                cellView.assignNeighbours(self.subviews)
+            }
         }
-
     }
     
     // Draws both players
@@ -144,7 +145,7 @@ class MazeView: UIView {
         let rows = dataSource.numberOfRowsFor(self)
         let columns = dataSource.numberOfColumnsFor(self)
         
-        // Rectanle determining the area to draw in
+        // Rectangle determining the area to draw in
         let origin = position2CGPoint(Position.zero).moved(dx: CGFloat(-lineWidth/2), dy: CGFloat(-lineWidth/2))
         let size = CGSize(width: cellSize*CGFloat(columns) + CGFloat(lineWidth),
                           height: cellSize*CGFloat(rows) + CGFloat(lineWidth))
@@ -170,7 +171,6 @@ class MazeView: UIView {
                 let p = Position(row: r, column:c)
                 if dataSource.isOpenCellFor(self, at: p) {
                     drawCellAt(p, with: openColor)
-                    
                 } else {
                     drawCellAt(p, with: closedColor)
                 }
@@ -194,10 +194,8 @@ class MazeView: UIView {
         
         // Only draws the open cells (including start and finish)
         if color != closedColor {
-                createCellView(pos, with: UIColor.purple)
+            createCellView(pos, with: UIColor.purple)
         }
-        
-        
     }
     
     // Draws the necessary sub-UIviews for Act-R
@@ -230,7 +228,7 @@ class MazeView: UIView {
         var n_openings = 0
 
         if pos.row > 0,dataSource.isOpenCellFor(self, at: pos.moved(rows: -1, columns: 0)) {
-            view.pathUP = true
+            view.pathUp = true
             n_openings += 1
         }
         
@@ -252,13 +250,7 @@ class MazeView: UIView {
         // Assign the type
         // TODO: Assign an enum to the types?
         if n_openings == 1 {
-            if pos == dataSource.startCellFor {
-                view.type = "start"
-            } else if pos == dataSource.finishCellFor {
-                view.type = "finish"
-            } else {
-                view.type = "deadend"
-            }
+            view.type = "deadend"
         } else if n_openings == 2 {
             if (view.pathUp && view.pathDown)||(view.pathLeft && view.pathRight) {
                     view.type = "corridor"
@@ -270,18 +262,12 @@ class MazeView: UIView {
         } else {
             view.type = "bad call: no openings?"
         }
-    }
-
-    func assignNeighbours() {
         
-        for view in subviews {
-            let currentX = Double(view.frame.origin.x) 
-            let currentY = Double(view.frame.origin.y)
-
-
+        if pos == dataSource.startCellFor(self) {
+            view.type = "start"
+        } else if pos == dataSource.finishCellFor(self) {
+            view.type = "finish"
         }
-
-        
     }
     
     

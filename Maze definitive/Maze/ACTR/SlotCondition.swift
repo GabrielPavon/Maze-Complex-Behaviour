@@ -21,11 +21,11 @@ struct SlotCondition: CustomStringConvertible {
         }
     }
     
-init(op: String?, slot: String, value: Value, model: Model) {
-    self.model = model
-    self.value = value
-    self.slot = slot
-    self.op = op
+    init(op: String?, slot: String, value: Value, model: Model) {
+        self.model = model
+        self.value = value
+        self.slot = slot
+        self.op = op
     }
     
     func opTest(op: String?, val1: Double, val2: Double) -> Bool {

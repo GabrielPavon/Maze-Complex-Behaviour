@@ -10,79 +10,76 @@ import UIKit
 
 
 class CellView: UIView {
-    
     var id = "-1"
     var type = "none"
     // Like a clock starting at 12
     // Up Right Down Left
     var pathUp = false
-    var neighbourUp?
-    var attendedUp = false
+    var neighbourUp: String?
 
     var pathRight = false
-    var neighbourRight?
-    var attendedRight = false
+    var neighbourRight: String?
 
     var pathDown = false
-    var neighbourDown?
-    var attendedDown = false
+    var neighbourDown: String?
 
     var pathLeft = false
-    var neighbourLeft?
-    var attendedLeft = false   
+    var neighbourLeft: String? 
     
     //override func draw(_ rect: CGRect) {
      //   <#code#>
     //}
     
-    func assignNeighbours (_ subViews: <CellView>) {
-
-        for view in subViews {
-            let viewX = view.frame.origin.x
-            let viewY = view.frame.origin.y
-        
-            if view.type == "corridor" { continue }
-               
-
-            if self.frame.origin.x == viewX && self.frame.origin.y != viewY {
-                if self.pathUp {
-                    if neighbourUp == nil {
-                        neighbourUp = view.id
-                        var neighbourY = viewY
-                    } else if viewY > neighbourY && viewY < self.frame.origin.y {
-                        neighbourUp = view.id
-                        neighbourY = viewY
-                    }                         
-                } 
-                if self.pathDown {
-                    if neighbourDown == nil {
-                        neighbourDown = view.id
-                        var neighbourY = viewY
-                    } else if viewY < neighbourY && viewY > self.frame.origin.y  {
-                        neighbourDown = view.id
-                        neighbourY = viewY
-                    } 
+    func assignNeighbours (_ subViews: [UIView]) {
+        for uiView in subViews {
+            if let view = uiView as? CellView {
+                let viewX = view.frame.origin.x
+                let viewY = view.frame.origin.y
+                var neighbourY: CGFloat = viewX
+                var neighbourX: CGFloat = viewY
+            
+                if view.type == "corridor" { continue }
+                   
+                if self.frame.origin.x == viewX && self.frame.origin.y != viewY {
+                    if self.pathUp {
+                        if neighbourUp == nil {
+                            neighbourUp = view.id
+                            neighbourY = viewY
+                        } else if viewY > neighbourY && viewY < self.frame.origin.y {
+                            neighbourUp = view.id
+                            neighbourY = viewY
+                        }
+                    }
+                    if self.pathDown {
+                        if neighbourDown == nil {
+                            neighbourDown = view.id
+                            neighbourY = viewY
+                        } else if viewY < neighbourY && viewY > self.frame.origin.y  {
+                            neighbourDown = view.id
+                            neighbourY = viewY
+                        }
+                    }
+                } else if self.frame.origin.x != viewX && self.frame.origin.y == viewY {
+                    if self.pathRight {
+                        if neighbourRight == nil {
+                            neighbourRight = view.id
+                            neighbourX = viewX
+                        } else if viewX < neighbourX && viewX > self.frame.origin.x {
+                            neighbourRight = view.id
+                            neighbourX = viewX
+                        }
+                    }
+                    if self.pathLeft {
+                        if neighbourLeft == nil {
+                            neighbourLeft = view.id
+                            neighbourX = viewX
+                        } else if viewX > neighbourX && viewX < self.frame.origin.x {
+                            neighbourLeft = view.id
+                            neighbourX = viewX
+                        }
+                    }
                 }
-            } else if self.frame.origin.x != viewX && self.frame.origin.y == viewY {
-                if self.pathRight {
-                    if neighbourRight == nil {
-                        neighbourRight = view.id
-                        var neighbourX = viewX
-                    } else if viewX < neighbourX && viewX > self.frame.origin.x {
-                        neighbourRight = view.id
-                        neighbourX = viewX
-                    }                         
-                } 
-                if self.pathLeft {
-                    if neighbourLeft == nil {
-                        neighbourLeft = view.id
-                        var neighbourX = viewX
-                    } else if viewX > neighbourX && viewX < self.frame.origin.x {
-                        neighbourLeft = view.id
-                        neighbourX = viewX
-                    } 
-                }
-            }            
+            }
         }
     }
 

@@ -43,9 +43,10 @@ class BufferCondition: CustomStringConvertible {
             for condition in slotConditions {
                 if !condition.test(bufferChunk: bufferChunk!, inst: inst) {  return false }
                 if prefix == "=" {
-                    inst.mapping["=" + buffer] = .Text(bufferChunk!.name)
+                    
                 }
             }
+            inst.mapping["=" + buffer] = .Text(bufferChunk!.name)
        //     println("   Production \(inst.p.name) matches this bufferchunk")
             return true
         } else if (prefix == "?") {
