@@ -8,7 +8,6 @@
     =visual>
         - left nil
         left =left
-        left-attended true
         screen-pos =previous
         screen-x =current-x
         screen-y =current-y
@@ -29,6 +28,10 @@
         chosen-id =left
         chosen-direction left
         previous =previous
+    =visual>
+        left-attended true
+    -visual>
+    =visual-location>
 )
 
 ;; Determine if there is a path from our current position to the visual-location on our right.
@@ -38,14 +41,13 @@
     =visual>
         - right nil
         right =right
-        right-attended true
         screen-pos =previous
         screen-x =current-x
         screen-y =current-y
     =visual-location>
         kind intersection
         screen-y =current-y
-        < screen-x =current-x
+        > screen-x =current-x
     =imaginal>
         start =start
         finish =finish
@@ -59,6 +61,10 @@
         chosen-id =right
         chosen-direction right
         previous =previous
+    =visual>
+        right-attended true
+    -visual>
+    =visual-location>
 )
 
 ;; Determine if there is a path from our current position to the visual-location upwards.
@@ -68,7 +74,6 @@
     =visual>
         - up nil
         up =up
-        up-attended true
         screen-pos =previous
         screen-x =current-x
         screen-y =current-y
@@ -89,6 +94,10 @@
         chosen-id =up
         chosen-direction up
         previous =previous
+    =visual>
+        up-attended true
+    -visual>
+    =visual-location>
 )
 
 ;; Determine if there is a path from our current position to the visual-location downwards.
@@ -98,7 +107,6 @@
     =visual>
         - down nil
         down =down
-        down-attended true
         screen-pos =previous
         screen-x =current-x
         screen-y =current-y
@@ -119,6 +127,10 @@
         chosen-id =down
         chosen-direction down
         previous =previous
+    =visual>
+        down-attended true
+    -visual>
+    =visual-location>
 )
 
 (p check-path
@@ -132,10 +144,27 @@
 ==>
     =goal>
         state move
-    =action>
+    +action>
         cmd move
         direction =dir
     =imaginal>
+    =visual>
+)
+
+(p check-path-fail
+    =goal>
+        state check-path
+    =imaginal>
+        chosen-id =id
+        previous =previous
+    =visual>
+        - id =id
+==>
+    =goal>
+        state find-next
+    +visual>
+        cmd move-attention
+        screen-pos =previous
 )
 
 (p move
@@ -162,23 +191,6 @@
         chosen-id =current
 ==>
     =goal>
-        state find-next-x
+        state is-dead-end
     =imaginal>
-)
-
-(p check-path-fail
-    =goal>
-        state check-path
-    =imaginal>
-        chosen-id =chosen-id
-        previous =previous
-    =visual>
-        - id =chosen-id
-==>
-    =goal>
-        state find-next
-    =imaginal>
-    +visual>
-        cmd move-attention
-        screen-pos =previous
 )

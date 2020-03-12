@@ -250,12 +250,12 @@ class MazeView: ACTRWindowView {
         // Assign the type
         // TODO: Assign an enum to the types?
         if n_openings == 1 {
-            view.type = "deadend"
+            view.type = "intersection"
         } else if n_openings == 2 {
             if (view.pathUp && view.pathDown)||(view.pathLeft && view.pathRight) {
                     view.type = "corridor"
                 } else {
-                    view.type = "corner"
+                    view.type = "intersection"
                 }
         } else if n_openings > 2 {
             view.type = "intersection"

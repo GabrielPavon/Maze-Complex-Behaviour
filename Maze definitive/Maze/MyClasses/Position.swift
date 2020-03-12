@@ -46,7 +46,7 @@ struct Position: Hashable {
     }
 
     func toId() -> String {
-        return String(row)+String(column)
+        return String(row+1)+String(column+1)
     }
     
 }

@@ -116,7 +116,7 @@ class Model {
     Run the model until a production has a +action> or no productions match. If the model stops because of an action, waitingForAction is made true, which in turn posts
      an "Action" notification
     */
-    func run(maxTime: Double, step: Bool = false) {
+    @objc func run(maxTime: Double, step: Bool = false) {
         let startTime = time
         running = true
         waitingForAction = false
@@ -190,6 +190,7 @@ class Model {
             }
             if let actionQuery = buffers["action"] {
                 if actionQuery.isRequest {
+                    visual.resetFinsts()
                     waitingForAction = true
                     return
                 }
@@ -206,7 +207,7 @@ class Model {
         
     }
     
-    func run(step: Bool = false) {
+    @objc func run(step: Bool = false) {
         if isValid {
             run(maxTime: 10000, step: step)
         }

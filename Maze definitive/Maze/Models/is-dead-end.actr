@@ -14,3 +14,47 @@
         state backtrack
     =visual>
 )
+
+(p is-no-dead-end-left
+    =goal>
+        state is-dead-end
+    =visual>
+        left-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p is-no-dead-end-right
+    =goal>
+        state is-dead-end
+    =visual>
+        right-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p is-no-dead-end-up
+    =goal>
+        state is-dead-end
+    =visual>
+        up-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p is-no-dead-end-down
+    =goal>
+        state is-dead-end
+    =visual>
+        down-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)

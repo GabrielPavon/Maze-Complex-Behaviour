@@ -152,6 +152,18 @@ class Vision {
     }
     
     /**
+    Check whether there are finsts to be removed
+    */
+    func resetFinsts() {
+        for i in stride(from: finsts.count - 1, to: 0, by: -1) {
+            let finst = finsts[i]
+            finst.attended = false
+            finst.attendedTime = 0
+            finsts.remove(at: i)
+        }
+    }
+    
+    /**
      Check whether a given visual object matches the request
      - Parameter request: The visual-location request
      - Parameter visualObject: The visual object
@@ -257,7 +269,6 @@ class Vision {
                     
                     return nil
                 }
-                
             }
         }
         
@@ -381,7 +392,7 @@ class Vision {
     }
     
     func update() -> Double {
-        //updateFinsts()
+        updateFinsts()
         if let request = model.buffers["visual-location"], request.isRequest {
             print("Handling visual-location request")
             if let result = findVisualLocation(request: request) {

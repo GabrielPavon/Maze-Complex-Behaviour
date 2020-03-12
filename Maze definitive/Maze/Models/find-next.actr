@@ -10,6 +10,7 @@
         finish =finish
     =visual>
         - left nil
+        left-attended false
 ==>
     +visual-location>
         kind intersection
@@ -31,6 +32,7 @@
         finish =finish
     =visual>
         - right nil
+        right-attended false
 ==>
     +visual-location>
         kind intersection
@@ -52,8 +54,7 @@
         finish =finish
     =visual>
         - up nil
-    ?visual-location>
-        buffer failure
+        up-attended false
 ==>
     +visual-location>
         kind intersection
@@ -70,20 +71,19 @@
 ;; There was no intersection on our x-axis. Check the y-axis.
 (p find-next-down
     =goal>
-        state find-next-y
+        state find-next
     =imaginal>
         finish =finish
     =visual>
         - down nil
-    ?visual-location>
-        buffer failure
+        down-attended false
 ==>
     +visual-location>
         kind intersection
         :attended nil
         :nearest current
         :nearest2 =finish
-        screen-y current
+        screen-x current
     =imaginal>
     =visual>
     =goal>

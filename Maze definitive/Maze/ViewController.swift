@@ -60,6 +60,8 @@ class ViewController: UIViewController, MazeViewDataSource {
             slot: "current",
             value: maze.computer.getPos().toId()
         )
+        
+        model.run()
     }
     
 

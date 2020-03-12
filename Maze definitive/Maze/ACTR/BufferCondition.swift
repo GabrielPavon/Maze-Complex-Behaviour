@@ -46,6 +46,7 @@ class BufferCondition: CustomStringConvertible {
                     
                 }
             }
+            // Moved this line out of the for loop, otherwise buffers themselves wouldn't be saved as variables.
             inst.mapping["=" + buffer] = .Text(bufferChunk!.name)
        //     println("   Production \(inst.p.name) matches this bufferchunk")
             return true

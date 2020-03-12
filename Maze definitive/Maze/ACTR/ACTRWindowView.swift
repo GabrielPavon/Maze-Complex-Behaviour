@@ -53,6 +53,7 @@ class ACTRWindowView: UIView {
     func displayFocusRing(vo: VisualObject) {
         if vr == nil {
             vr = FocusRing(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            vr?.backgroundColor = UIColor.red
             vr?.isOpaque = true
             self.addSubview(vr!)
         }

@@ -4,26 +4,27 @@
 ;; Move the attention to a visual location.
 (p move-attention
     =goal>
+        previous =previous
         state move-attention
     =visual-location>
-    ?visual>
-        state free
 ==>
     +visual>
         cmd move-attention
         screen-pos =visual-location
     =visual-location>
+    =goal>
+        previous =previous
+        state after-move-attention
 )
 
 ;; What to do after attention is moved to start.
 (p after-move-attention-start
     =goal>
         previous find-start
-        state move-attention
+        state after-move-attention
     =visual>
 ==>
     =goal>
-        previous move-attention
         state encode-start
     =visual>
 )
@@ -32,16 +33,16 @@
 (p after-move-attention-determine-left
     =goal>
         previous determine-path
-        state move-attention
+        state after-move-attention
     =visual>
     =imaginal>
         chosen-direction left
+        previous =previous
 ==>
     =goal>
-        previous move-attention
         state check-path
     =visual>
-        origin right
+        origin =previous
         right-attended true
 )
 
@@ -49,33 +50,33 @@
 (p after-move-attention-determine-right
     =goal>
         previous determine-path
-        state move-attention
+        state after-move-attention
     =visual>
     =imaginal>
+        previous =previous
         chosen-direction right
 ==>
     =goal>
-        previous move-attention
         state check-path
     =visual>
-        origin left
+        origin =previous
         left-attended true
 )
 
 ;; What to do after attention is moved to new intersection.
 (p after-move-attention-determine-up
     =goal>
-        previous determine-path
-        state move-attention
+        state after-move-attention
     =visual>
     =imaginal>
+        previous =previous
         chosen-direction up
 ==>
     =goal>
         previous move-attention
         state check-path
     =visual>
-        origin down
+        origin =previous
         down-attended true
 )
 
@@ -83,15 +84,15 @@
 (p after-move-attention-determine-down
     =goal>
         previous determine-path
-        state move-attention
+        state after-move-attention
     =visual>
     =imaginal>
+        previous =previous
         chosen-direction down
 ==>
     =goal>
-        previous move-attention
         state check-path
     =visual>
-        origin up
+        origin =previous
         up-attended true
 )
