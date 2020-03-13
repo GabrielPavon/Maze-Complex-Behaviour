@@ -1,6 +1,7 @@
 ;;; Model for the maze
 ;;;
 
+;; TODO use previous screen-pos to move attention and previous id to move.
 (p backtrack-retrieve
     =goal>
         state backtrack
@@ -13,70 +14,69 @@
 ==>
     +retrieval>
         id =origin
+    =goal>
+        state backtrack-move
+    =visual>
 )
 
-(p backtrack-move
+(p backtrack-move-start
     =goal>
-        state backtrack
+        state backtrack-move
     =visual>
+        id =current
         origin =origin
+        origin-dir =dir
         left-attended true
         right-attended true
         up-attended true
         down-attended true
+    ?retrieval>
+        buffer full
     =retrieval>
-        id =id
+        id =origin
         screen-pos =pos
 ==>
+    +imaginal>
+        chosen-direction =dir
     +visual>
         cmd move-attention
         screen-pos =pos
     +action>
         cmd move
-        id =id
+        direction =dir
+        current =current
 )
 
-(p backtrack-check-left
+(p backtrack-move
     =goal>
-        state backtrack
+        state backtrack-move
     =visual>
-        left-attended false
+        id =current
+    ?retrieval>
+        buffer empty
+    =action>
+        - current =current
+    =imaginal>
+        chosen-direction =dir
 ==>
-    =goal>
-        state find-next
-    =visual>
-)
-
-(p backtrack-check-right
-    =goal>
-        state backtrack
-    =visual>
-        right-attended false
-==>
-    =goal>
-        state find-next
-    =visual>
-)
-
-
-(p backtrack-check-up
-    =goal>
-        state backtrack
-    =visual>
-        up-attended false
-==>
-    =goal>
-        state find-next
+    +action>
+        cmd move
+        direction =dir
+    =imaginal>
     =visual>
 )
 
-(p backtrack-check-down
+(p backtrack-move-finish
     =goal>
-        state backtrack
+        state backtrack-move
     =visual>
-        down-attended false
+        id =current
+    ?retrieval>
+        buffer empty
+    =action>
+        current =current
 ==>
     =goal>
-        state find-next
+        state is-dead-end
     =visual>
 )

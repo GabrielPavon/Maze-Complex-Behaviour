@@ -32,6 +32,12 @@ class Declarative  {
     var retrieveError = false
     var retrievaltoDM = false
     
+    var model: Model?
+    
+    init(model: Model) {
+        self.model = model
+    }
+    
     /**
         Is er there a duplicate of a chunk in dm?
         - parameter chunk: The chunk to be checked
@@ -55,6 +61,8 @@ class Declarative  {
         switch (slot,value) {
         case ("state","busy"): return retrieveBusy
         case ("state","error"): return retrieveError
+        case ("buffer", "full"): return model!.buffers["retrieval"] != nil
+        case ("buffer", "empty"): return model!.buffers["retrieval"] == nil
         default: return false
         }
     }

@@ -5,6 +5,7 @@
     =goal>
         state is-dead-end
     =visual>
+        isa intersection
         left-attended true
         right-attended true
         up-attended true
@@ -13,6 +14,16 @@
     =goal>
         state backtrack
     =visual>
+)
+
+(p is-finish
+    =goal>
+        state is-dead-end
+    =visual>
+        isa finish
+==>
+    +action>
+        cmd done
 )
 
 (p is-no-dead-end-left

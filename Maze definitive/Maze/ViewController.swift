@@ -39,6 +39,8 @@ class ViewController: UIViewController, MazeViewDataSource {
     
     @objc func receiveAction() {
         switch model.lastAction(slot: "cmd") {
+        case "done":
+            return
         case "move":
             switch model.lastAction(slot: "direction") {
                 case "up":

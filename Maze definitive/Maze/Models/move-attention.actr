@@ -37,13 +37,15 @@
     =visual>
     =imaginal>
         chosen-direction left
-        previous =previous
+        previous-id =previous
 ==>
     =goal>
         state check-path
     =visual>
         origin =previous
         right-attended true
+        origin-dir right
+    =imaginal>
 )
 
 ;; What to do after attention is moved to new intersection.
@@ -53,7 +55,7 @@
         state after-move-attention
     =visual>
     =imaginal>
-        previous =previous
+        previous-id =previous
         chosen-direction right
 ==>
     =goal>
@@ -61,6 +63,8 @@
     =visual>
         origin =previous
         left-attended true
+        origin-dir left
+    =imaginal>
 )
 
 ;; What to do after attention is moved to new intersection.
@@ -69,7 +73,7 @@
         state after-move-attention
     =visual>
     =imaginal>
-        previous =previous
+        previous-id =previous
         chosen-direction up
 ==>
     =goal>
@@ -78,6 +82,8 @@
     =visual>
         origin =previous
         down-attended true
+        origin-dir down
+    =imaginal>
 )
 
 ;; What to do after attention is moved to new intersection.
@@ -87,7 +93,7 @@
         state after-move-attention
     =visual>
     =imaginal>
-        previous =previous
+        previous-id =previous
         chosen-direction down
 ==>
     =goal>
@@ -95,4 +101,6 @@
     =visual>
         origin =previous
         up-attended true
+        origin-dir up
+    =imaginal>
 )

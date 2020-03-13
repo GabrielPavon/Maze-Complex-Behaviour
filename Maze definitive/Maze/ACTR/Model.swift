@@ -10,7 +10,7 @@ import Foundation
 
 class Model {
     var time: Double = 0
-    var dm = Declarative()
+    lazy var dm = Declarative(model: self)
     var procedural = Procedural()
     lazy var temporal = Temporal(model: self)
     lazy var visual = Vision(model: self)

@@ -8,7 +8,8 @@
     =visual>
         - left nil
         left =left
-        screen-pos =previous
+        screen-pos =previous-pos
+        id =previous-id
         screen-x =current-x
         screen-y =current-y
     =visual-location>
@@ -27,7 +28,8 @@
         finish =finish
         chosen-id =left
         chosen-direction left
-        previous =previous
+        previous-pos =previous-pos
+        previous-id =previous-id
     =visual>
         left-attended true
     -visual>
@@ -41,7 +43,8 @@
     =visual>
         - right nil
         right =right
-        screen-pos =previous
+        screen-pos =previous-pos
+        id =previous-id
         screen-x =current-x
         screen-y =current-y
     =visual-location>
@@ -60,7 +63,8 @@
         finish =finish
         chosen-id =right
         chosen-direction right
-        previous =previous
+        previous-pos =previous-pos
+        previous-id =previous-id
     =visual>
         right-attended true
     -visual>
@@ -74,7 +78,8 @@
     =visual>
         - up nil
         up =up
-        screen-pos =previous
+        screen-pos =previous-pos
+        id =previous-id
         screen-x =current-x
         screen-y =current-y
     =visual-location>
@@ -93,7 +98,8 @@
         finish =finish
         chosen-id =up
         chosen-direction up
-        previous =previous
+        previous-pos =previous-pos
+        previous-id =previous-id
     =visual>
         up-attended true
     -visual>
@@ -107,7 +113,8 @@
     =visual>
         - down nil
         down =down
-        screen-pos =previous
+        screen-pos =previous-pos
+        id =previous-id
         screen-x =current-x
         screen-y =current-y
     =visual-location>
@@ -126,7 +133,8 @@
         finish =finish
         chosen-id =down
         chosen-direction down
-        previous =previous
+        previous-pos =previous-pos
+        previous-id =previous-id
     =visual>
         down-attended true
     -visual>
@@ -156,7 +164,7 @@
         state check-path
     =imaginal>
         chosen-id =id
-        previous =previous
+        previous-pos =previous
     =visual>
         - id =id
 ==>
