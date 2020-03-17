@@ -19,22 +19,27 @@ class ViewController: UIViewController, MazeViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         mazeView.dataSource = self
-        //mazeView.setNeedsDisplay()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        mazeView.draw(mazeView.frame)
+        mazeView.createMaze()
+        //mazeView.draw(mazeView.frame)
         
         if model.loadedModel != "maze" {
             model.loadedModel = "maze"
             model.loadModel(fileName: "maze")
             model.reset()
-            model.visual.updateVisicon(items: mazeView.getVisicon())
-            model.visual.setWindow(mazeView)
+            model.visual.updateVisicon(items: mazeView.content.getVisicon())
+            model.visual.setWindow(mazeView.content)
         }
         
         print("Setting listener for Action")
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receiveAction), name: NSNotification.Name(rawValue: "Action"), object: nil)
         
         model.run()
+        
     }
     
     @objc func receiveAction() {
@@ -64,6 +69,10 @@ class ViewController: UIViewController, MazeViewDataSource {
         )
         
         model.run()
+        
+        mazeView.setNeedsDisplay()
+        
+        checkIfWin()
     }
     
 
