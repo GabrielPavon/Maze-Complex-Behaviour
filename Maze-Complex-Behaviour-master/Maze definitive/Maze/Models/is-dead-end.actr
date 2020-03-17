@@ -1,0 +1,71 @@
+;;; Model for the maze
+;;;
+
+(p is-dead-end
+    =goal>
+        state is-dead-end
+    =visual>
+        isa intersection
+        left-attended true
+        right-attended true
+        up-attended true
+        down-attended true
+==>
+    =goal>
+        state backtrack
+    =visual>
+)
+
+(p is-finish
+    =goal>
+        state is-dead-end
+    =visual>
+        isa finish
+==>
+    +action>
+        cmd done
+)
+
+(p is-no-dead-end-left
+    =goal>
+        state is-dead-end
+    =visual>
+        left-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p is-no-dead-end-right
+    =goal>
+        state is-dead-end
+    =visual>
+        right-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p is-no-dead-end-up
+    =goal>
+        state is-dead-end
+    =visual>
+        up-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)
+
+(p is-no-dead-end-down
+    =goal>
+        state is-dead-end
+    =visual>
+        down-attended false
+==>
+    =goal>
+        state find-next
+    =visual>
+)

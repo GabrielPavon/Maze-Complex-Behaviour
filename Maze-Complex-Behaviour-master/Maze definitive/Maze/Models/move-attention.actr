@@ -1,0 +1,106 @@
+;;; Model for the maze
+;;;
+
+;; Move the attention to a visual location.
+(p move-attention
+    =goal>
+        previous =previous
+        state move-attention
+    =visual-location>
+==>
+    +visual>
+        cmd move-attention
+        screen-pos =visual-location
+    =visual-location>
+    =goal>
+        previous =previous
+        state after-move-attention
+)
+
+;; What to do after attention is moved to start.
+(p after-move-attention-start
+    =goal>
+        previous find-start
+        state after-move-attention
+    =visual>
+==>
+    =goal>
+        state encode-start
+    =visual>
+)
+
+;; What to do after attention is moved to new intersection.
+(p after-move-attention-determine-left
+    =goal>
+        previous determine-path
+        state after-move-attention
+    =visual>
+    =imaginal>
+        chosen-direction left
+        previous-id =previous
+==>
+    =goal>
+        state check-path
+    =visual>
+        origin =previous
+        right-attended true
+        origin-dir right
+    =imaginal>
+)
+
+;; What to do after attention is moved to new intersection.
+(p after-move-attention-determine-right
+    =goal>
+        previous determine-path
+        state after-move-attention
+    =visual>
+    =imaginal>
+        previous-id =previous
+        chosen-direction right
+==>
+    =goal>
+        state check-path
+    =visual>
+        origin =previous
+        left-attended true
+        origin-dir left
+    =imaginal>
+)
+
+;; What to do after attention is moved to new intersection.
+(p after-move-attention-determine-up
+    =goal>
+        state after-move-attention
+    =visual>
+    =imaginal>
+        previous-id =previous
+        chosen-direction up
+==>
+    =goal>
+        previous move-attention
+        state check-path
+    =visual>
+        origin =previous
+        down-attended true
+        origin-dir down
+    =imaginal>
+)
+
+;; What to do after attention is moved to new intersection.
+(p after-move-attention-determine-down
+    =goal>
+        previous determine-path
+        state after-move-attention
+    =visual>
+    =imaginal>
+        previous-id =previous
+        chosen-direction down
+==>
+    =goal>
+        state check-path
+    =visual>
+        origin =previous
+        up-attended true
+        origin-dir up
+    =imaginal>
+)

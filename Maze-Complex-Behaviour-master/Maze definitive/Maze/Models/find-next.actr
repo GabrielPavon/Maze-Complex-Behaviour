@@ -1,0 +1,114 @@
+;;; Model for the maze
+;;;
+
+;; Is there an intersection on our current x-axis?
+
+(p find-next-left
+    =goal>
+        state find-next
+    =imaginal>
+        finish =finish
+    =visual>
+        - left nil
+        left-attended false
+==>
+    +visual-location>
+        kind intersection
+        :attended nil
+        :nearest current
+        :nearest2 =finish
+        screen-y current
+    =imaginal>
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; Is there an intersection on our current x-axis?
+(p find-next-right
+    =goal>
+        state find-next
+    =imaginal>
+        finish =finish
+    =visual>
+        - right nil
+        right-attended false
+==>
+    +visual-location>
+        kind intersection
+        :attended nil
+        :nearest current
+        :nearest2 =finish
+        screen-y current
+    =imaginal>
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; Is there an intersection on our current x-axis?
+(p find-next-up
+    =goal>
+        state find-next
+    =imaginal>
+        finish =finish
+    =visual>
+        - up nil
+        up-attended false
+==>
+    +visual-location>
+        kind intersection
+        :attended nil
+        :nearest current
+        :nearest2 =finish
+        screen-x current
+    =imaginal>
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; There was no intersection on our x-axis. Check the y-axis.
+(p find-next-down
+    =goal>
+        state find-next
+    =imaginal>
+        finish =finish
+    =visual>
+        - down nil
+        down-attended false
+==>
+    +visual-location>
+        kind intersection
+        :attended nil
+        :nearest current
+        :nearest2 =finish
+        screen-x current
+    =imaginal>
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; There was an intersection on our x-axis. Determine if there is a path there.
+(p check-success
+    =goal>
+        state check-find
+    ?visual-location>
+        buffer full
+==>
+    =goal>
+        state determine-path
+)
+
+;; There was no intersection on our y-axis either. Back to square 1.
+(p check-fail
+    =goal>
+        state check-find
+    ?visual-location>
+        buffer failure
+==>
+    =goal>
+        state find-next
+)
+
