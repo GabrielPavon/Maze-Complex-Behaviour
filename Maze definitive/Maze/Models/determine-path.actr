@@ -13,18 +13,15 @@
         screen-x =current-x
         screen-y =current-y
     =visual-location>
-        kind intersection
         screen-y =current-y
         < screen-x =current-x
     =imaginal>
-        start =start
         finish =finish
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
-        start =start
         finish =finish
         chosen-id =left
         chosen-direction left
@@ -48,18 +45,15 @@
         screen-x =current-x
         screen-y =current-y
     =visual-location>
-        kind intersection
         screen-y =current-y
         > screen-x =current-x
     =imaginal>
-        start =start
         finish =finish
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
-        start =start
         finish =finish
         chosen-id =right
         chosen-direction right
@@ -83,18 +77,15 @@
         screen-x =current-x
         screen-y =current-y
     =visual-location>
-        kind intersection
         < screen-y =current-y
         screen-x =current-x
     =imaginal>
-        start =start
         finish =finish
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
-        start =start
         finish =finish
         chosen-id =up
         chosen-direction up
@@ -118,18 +109,15 @@
         screen-x =current-x
         screen-y =current-y
     =visual-location>
-        kind intersection
         > screen-y =current-y
         screen-x =current-x
     =imaginal>
-        start =start
         finish =finish
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
-        start =start
         finish =finish
         chosen-id =down
         chosen-direction down

@@ -8,6 +8,7 @@
         state find-next
     =imaginal>
         finish =finish
+        - tried left
     =visual>
         - left nil
         left-attended false
@@ -18,7 +19,9 @@
         :nearest current
         :nearest2 =finish
         screen-y current
-    =imaginal>
+    +imaginal>
+        finish =finish
+        tried left
     =visual>
     =goal>
         state check-find
@@ -30,6 +33,7 @@
         state find-next
     =imaginal>
         finish =finish
+        - tried right
     =visual>
         - right nil
         right-attended false
@@ -40,7 +44,9 @@
         :nearest current
         :nearest2 =finish
         screen-y current
-    =imaginal>
+    +imaginal>
+        finish =finish
+        tried right
     =visual>
     =goal>
         state check-find
@@ -52,6 +58,7 @@
         state find-next
     =imaginal>
         finish =finish
+        - tried up
     =visual>
         - up nil
         up-attended false
@@ -62,7 +69,9 @@
         :nearest current
         :nearest2 =finish
         screen-x current
-    =imaginal>
+    +imaginal>
+        finish =finish
+        tried up
     =visual>
     =goal>
         state check-find
@@ -74,6 +83,7 @@
         state find-next
     =imaginal>
         finish =finish
+        - tried down
     =visual>
         - down nil
         down-attended false
@@ -84,7 +94,77 @@
         :nearest current
         :nearest2 =finish
         screen-x current
+    +imaginal>
+        finish =finish
+        tried down
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; No intersection found. Check for finish.
+(p find-finish-left
+    =goal>
+        state find-next
+    =visual>
+        - left nil
+        left-attended false
     =imaginal>
+        tried left
+==>
+    +visual-location>
+        kind finish
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; No intersection found. Check for finish.
+(p find-finish-right
+    =goal>
+        state find-next
+    =visual>
+        - right nil
+        right-attended false
+    =imaginal>
+        tried right
+==>
+    +visual-location>
+        kind finish
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; No intersection found. Check for finish.
+(p find-finish-up
+    =goal>
+        state find-next
+    =visual>
+        - up nil
+        up-attended false
+    =imaginal>
+        tried up
+==>
+    +visual-location>
+        kind finish
+    =visual>
+    =goal>
+        state check-find
+)
+
+;; No intersection found. Check for finish.
+(p find-finish-down
+    =goal>
+        state find-next
+    =visual>
+        - down nil
+        down-attended false
+    =imaginal>
+        tried down
+==>
+    +visual-location>
+        kind finish
     =visual>
     =goal>
         state check-find

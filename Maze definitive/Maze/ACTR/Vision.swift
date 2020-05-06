@@ -343,7 +343,7 @@ class Vision {
             }
         }
         
-        // We don't always want the lowest x. We want random if there are multiple.
+        // We don't always want the lowest x. We want random if there are multiple. That's why this is commented.
 //        if slotWithHighestOrLowest == nil {
 //            slotWithHighestOrLowest = "screen-x"
 //            lowest = true

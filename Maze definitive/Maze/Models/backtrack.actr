@@ -35,9 +35,12 @@
     =retrieval>
         id =origin
         screen-pos =pos
+    =imaginal>
+        finish =finish
 ==>
     +imaginal>
         chosen-direction =dir
+        finish =finish
     +visual>
         cmd move-attention
         screen-pos =pos
