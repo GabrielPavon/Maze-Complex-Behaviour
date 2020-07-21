@@ -17,12 +17,14 @@ class Maze {
     private(set) var startPosition: Position!
     private(set) var finishPosition: Position!
 
+    private(set) var bottleneckPosition: Position!
+    
     private(set) var computer = Player()
     private(set) var player = Player()
     
     // Assigns the dimensions to the maze
     init(withSize size : Int) {
-        self.size = size % 2 == 1 ? size : size+1  // Para que sea impar
+        self.size = size % 2 == 1 ? size : size+1  // So it's odd
         walls = Array(repeating: Array(repeating: true, count: size), count: size)
 
         startPosition = Position.zero
@@ -56,8 +58,7 @@ class Maze {
     }
        
     
-    private func generateWalls() {
-         
+    private func generateWalls(multiplePaths:Bool = false, withBottleneck:Bool = true) {
         // Set of the visited positions. Used for the maze generation
         var visited = Set<Position>()
         
@@ -65,15 +66,64 @@ class Maze {
         var newPos = Position.zero
         
         let positionsToVisit = Int(pow((Double(size)+1)/2, 2))
-        while visited.count < positionsToVisit {
+        
+        var bottleneck = -1
+        var opening = -1
+        
+        if withBottleneck {
+            // Generates the bottleneck coordinates
+            bottleneck = Int(arc4random_uniform(UInt32((self.size-1)/2)))*2+1
+            opening = Int(arc4random_uniform(UInt32((self.size+1)/2)))*2
+
+            bottleneckPosition = Position(row: bottleneck, column: opening)
+            
+            self[Position(row: bottleneck, column: opening)] = false
+        }
+        
+        while visited.count < positionsToVisit  {
             if !visited.contains(newPos) {
                 visited.insert(newPos)
                 self[newPos] = false
                 self[prevPos +- newPos] = false
             }
-            prevPos = newPos
-            newPos = randomNeighbourOf(newPos)
+            let potentialNewPos = randomNeighbourOf(newPos)
+            if (potentialNewPos +- newPos).row != bottleneck || (potentialNewPos +- newPos).column == opening {
+                prevPos = newPos
+                newPos = potentialNewPos
+            }
         }
+
+        // After this is so there are more open spaces
+        if multiplePaths {
+            for row in 0..<self.size{
+                for col in 0..<self.size {
+                    
+                    if  (arc4random_uniform(100) < 10),(col%2 == 0){
+                        self[Position(row: row, column: col)] = false
+                    }
+                    if  (arc4random_uniform(100) < 10),(row%2 == 0){
+                        self[Position(row: row, column: col)] = false
+                    }
+                }
+            }
+        }
+        
+        if arc4random_uniform(2) == 0 { trasposeMaze() }
+        
+    }
+    
+    private func trasposeMaze() {
+        var newWalls: [[Bool]] = Array(repeating: Array(repeating: true, count: size), count: size)
+        
+        for row in 0..<self.size{
+            for col in 0..<self.size{
+                newWalls[col][row] = walls[row][col]
+            }
+        }
+        self.walls = newWalls
+        
+        let oldBottleneck: Position = bottleneckPosition
+        bottleneckPosition = Position(row: oldBottleneck.column , column: oldBottleneck.row )
     }
     
     private func randomNeighbourOf(_ pos: Position) -> Position {

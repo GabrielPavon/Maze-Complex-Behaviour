@@ -19,11 +19,14 @@ protocol MazeViewDataSource: class {
     /// Asks DataSource if the cell at specified position is Open
     func isOpenCellFor(_ mazeView: MazeView, at position: Position) -> Bool
     
-    /// Asks DataSource at which position de start cell is
+    /// Asks DataSource at which position the start cell is
     func startCellFor(_ mazeView: MazeView) -> Position
     
-    /// Asks DataSource at which position de finish cell is
+    /// Asks DataSource at which position the finish cell is
     func finishCellFor(_ mazeView: MazeView) -> Position
+    
+    /// Asks DataSource at which position the bootleneck coords are
+    func bottleneckCellFor(_ mazeView: MazeView) -> Position
     
     /// Asks DataSource for the trajectory of the player
     func playerTrajectoryFor(_ mazeView: MazeView) -> Trajectory
@@ -220,10 +223,13 @@ class MazeView: UIView {
             view.type = "bad call: no openings?"
         }
         
+        
         if pos == dataSource.startCellFor(self) {
             view.type = "start"
         } else if pos == dataSource.finishCellFor(self) {
             view.type = "finish"
+        } else if pos == dataSource.bottleneckCellFor(self) {
+            view.type = "bottleneck"
         }
     }
     

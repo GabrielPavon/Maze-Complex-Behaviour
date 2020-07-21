@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, MazeViewDataSource {
     let model = Global.model
-    static let MAZE_SIDE = 9
+    static let MAZE_SIDE = 19
     
     @IBOutlet weak var mazeView: MazeView!
     
@@ -68,7 +68,12 @@ class ViewController: UIViewController, MazeViewDataSource {
             value: maze.computer.getPos().toId()
         )
         
-        model.run()
+        Timer.scheduledTimer(withTimeInterval: 0.2,
+                             repeats: false,
+                             block:  { (_) in
+                                            self.model.run()
+                                        })
+        //model.run()
         
         mazeView.setNeedsDisplay()
         
@@ -142,6 +147,10 @@ class ViewController: UIViewController, MazeViewDataSource {
     
     func finishCellFor(_ mazeView: MazeView) -> Position {
         return maze.finishPosition
+    }
+    
+    func bottleneckCellFor(_ mazeView: MazeView) -> Position {
+        return maze.bottleneckPosition
     }
     
     func playerTrajectoryFor(_ mazeView: MazeView) -> Trajectory {
