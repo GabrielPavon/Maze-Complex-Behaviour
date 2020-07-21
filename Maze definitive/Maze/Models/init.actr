@@ -38,14 +38,19 @@
     =goal>
         state encode-finish
     =visual-location>
+        screen-x =finish-x
+        screen-y =finish-y
     =imaginal>
         start =start
 ==>
     +imaginal>
         start =start
         finish =visual-location
+        target =visual-location
+        finish-x =finish-x
+        finish-y =finish-y
     =goal>
-        state find-next
+        state find-bottleneck
 )
 
 

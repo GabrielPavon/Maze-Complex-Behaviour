@@ -17,12 +17,20 @@
         < screen-x =current-x
     =imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
         chosen-id =left
         chosen-direction left
         previous-pos =previous-pos
@@ -49,12 +57,20 @@
         > screen-x =current-x
     =imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
         chosen-id =right
         chosen-direction right
         previous-pos =previous-pos
@@ -81,12 +97,20 @@
         screen-x =current-x
     =imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
         chosen-id =up
         chosen-direction up
         previous-pos =previous-pos
@@ -113,12 +137,20 @@
         screen-x =current-x
     =imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
 ==>
     =goal>
         state move-attention
         previous determine-path
     +imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
         chosen-id =down
         chosen-direction down
         previous-pos =previous-pos
@@ -163,30 +195,4 @@
         screen-pos =previous
 )
 
-(p move
-    =goal>
-        state move
-    =action>
-        current =current
-    =imaginal>
-        - chosen-id =current
-        chosen-direction =dir
-==>
-    +action>
-        cmd move
-        direction =dir
-    =imaginal>
-)
 
-(p move-finish
-    =goal>
-        state move
-    =action>
-        current =current
-    =imaginal>
-        chosen-id =current
-==>
-    =goal>
-        state is-dead-end
-    =imaginal>
-)

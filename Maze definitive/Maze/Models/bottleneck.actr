@@ -1,0 +1,218 @@
+(p find-bottleneck
+    =goal>
+        state find-bottleneck
+==>
+    +visual-location>
+        kind bottleneck
+        :attended nil
+        :nearest current
+    =visual>
+    =goal>
+        state check-find-bottleneck
+)
+
+(p check-success-bottleneck
+    =goal>
+        state check-find-bottleneck
+    =visual>
+        screen-x =previous-x
+        screen-y =previous-y
+        screen-pos =previous-pos
+    ?visual-location>
+        buffer full
+    =imaginal>
+        start =start
+        target =target
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+==>
+    =goal>
+        previous check-find-bottleneck
+        state move-attention
+    +imaginal>
+        previous-x =previous-x
+        previous-y =previous-y
+        previous-pos =previous-pos
+        start =start
+        target =target
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+)
+
+ (p check-fail-bottleneck
+     =goal>
+         state check-find-bottleneck
+     ?visual-location>
+         buffer failure
+ ==>
+     =goal>
+         state find-next
+ )
+
+ (p check-horizontal-bottleneck-viability1
+     =goal>
+         state check-bottleneck-viability1
+     =imaginal>
+        previous-x =previous-x
+     =visual>
+        left-attended false
+        right-attended false
+        > screen-x =previous-x
+ ==>
+     =goal>
+         state check-bottleneck-viability2
+     =imaginal>
+     =visual>
+ )
+ 
+ (p check-horizontal-bottleneck-viability1-fail
+     =goal>
+         state check-bottleneck-viability1
+     =imaginal>
+        previous-x =finish-x
+        previous-pos =pos
+     =visual>
+        left-attended false
+        right-attended false
+        <= screen-x =previous-x
+ ==>
+     =goal>
+         state find-next
+     =imaginal>
+     +visual>
+        cmd move-attention
+        screen-pos =pos
+ )
+ 
+ (p check-horizontal-bottleneck-viability2
+     =goal>
+         state check-bottleneck-viability2
+     =imaginal>
+        previous-pos =previous-pos
+        start =start
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+     =visual>
+        left-attended false
+        right-attended false
+        < screen-x =finish-x
+        id =id
+ ==>
+     =goal>
+         state find-next
+     +imaginal>
+        target =visual
+        target-id =id
+        start =start
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+     +visual>
+        cmd move-attention
+        screen-pos =previous-pos
+ )
+ 
+ (p check-horizontal-bottleneck-viability2-fail
+     =goal>
+         state check-bottleneck-viability2
+     =imaginal>
+        finish-x =finish-x
+        previous-pos =pos
+     =visual>
+        left-attended false
+        right-attended false
+        >= screen-x =finish-x
+ ==>
+     =goal>
+         state find-next
+     =imaginal>
+     +visual>
+         cmd move-attention
+         screen-pos =pos
+ )
+ 
+ (p check-vertical-bottleneck-viability1
+     =goal>
+         state check-bottleneck-viability1
+     =imaginal>
+        previous-y =previous-y
+     =visual>
+        up-attended false
+        down-attended false
+        > screen-y =previous-y
+ ==>
+     =goal>
+         state check-bottleneck-viability2
+     =imaginal>
+     =visual>
+ )
+ 
+ (p check-vertical-bottleneck-viability1-fail
+     =goal>
+         state check-bottleneck-viability1
+     =imaginal>
+        previous-y =previous-y
+        previous-pos =pos
+     =visual>
+        up-attended false
+        down-attended false
+        <= screen-y =previous-y
+ ==>
+     =goal>
+         state find-next
+     =imaginal>
+     +visual>
+        cmd move-attention
+        screen-pos =pos
+ )
+ 
+ (p check-vertical-bottleneck-viability2
+     =goal>
+         state check-bottleneck-viability2
+     =imaginal>
+        previous-pos =previous-pos
+        start =start
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+     =visual>
+        up-attended false
+        down-attended false
+        < screen-y =finish-y
+        id =id
+ ==>
+     =goal>
+         state find-next
+     +imaginal>
+         target =visual
+         target-id =id
+         start =start
+         finish =finish
+         finish-x =finish-x
+         finish-y =finish-y
+     +visual>
+         cmd move-attention
+         screen-pos =previous-pos
+ )
+ 
+ (p check-vertical-bottleneck-viability2-fail
+     =goal>
+         state check-bottleneck-viability2
+     =imaginal>
+        finish-y =finish-y
+        previous-pos =pos
+     =visual>
+        up-attended false
+        down-attended false
+        >= screen-y =finish-y
+ ==>
+     =goal>
+         state find-next
+     =imaginal>
+     +visual>
+        cmd move-attention
+        screen-pos =pos
+ )

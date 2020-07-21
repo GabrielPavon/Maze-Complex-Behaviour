@@ -29,6 +29,17 @@
     =visual>
 )
 
+(p after-move-attention-bottleneck
+    =goal>
+        previous check-find-bottleneck
+        state after-move-attention
+    =visual>
+==>
+    =goal>
+        state check-bottleneck-viability1
+    =visual>
+)
+
 ;; What to do after attention is moved to new intersection.
 (p after-move-attention-determine-left
     =goal>

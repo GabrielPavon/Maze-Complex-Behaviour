@@ -12,6 +12,8 @@
 		501DB7282416B250000956AA /* find-next.actr in Resources */ = {isa = PBXBuildFile; fileRef = 501DB7252416B250000956AA /* find-next.actr */; };
 		501DB72A2416B346000956AA /* move-attention.actr in Resources */ = {isa = PBXBuildFile; fileRef = 501DB7292416B346000956AA /* move-attention.actr */; };
 		506057C1240FF145009BBDD9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506057C0240FF145009BBDD9 /* Global.swift */; };
+		506B58F924C5DC0200C62BE2 /* bottleneck.actr in Resources */ = {isa = PBXBuildFile; fileRef = 506B58F824C5DC0200C62BE2 /* bottleneck.actr */; };
+		506B58FB24C7317B00C62BE2 /* move.actr in Resources */ = {isa = PBXBuildFile; fileRef = 506B58FA24C7317B00C62BE2 /* move.actr */; };
 		50C37838240EBED2004150F5 /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C37837240EBED2004150F5 /* Computer.swift */; };
 		50CB1DD924002EE400F81C26 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DC824002EE300F81C26 /* SlotAction.swift */; };
 		50CB1DDA24002EE400F81C26 /* BufferCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB1DC924002EE300F81C26 /* BufferCondition.swift */; };
@@ -54,6 +56,8 @@
 		501DB7252416B250000956AA /* find-next.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "find-next.actr"; sourceTree = "<group>"; };
 		501DB7292416B346000956AA /* move-attention.actr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "move-attention.actr"; sourceTree = "<group>"; };
 		506057C0240FF145009BBDD9 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		506B58F824C5DC0200C62BE2 /* bottleneck.actr */ = {isa = PBXFileReference; lastKnownFileType = text; path = bottleneck.actr; sourceTree = "<group>"; };
+		506B58FA24C7317B00C62BE2 /* move.actr */ = {isa = PBXFileReference; lastKnownFileType = text; path = move.actr; sourceTree = "<group>"; };
 		50C37837240EBED2004150F5 /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		50CB1DC824002EE300F81C26 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
 		50CB1DC924002EE300F81C26 /* BufferCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferCondition.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				501DB7252416B250000956AA /* find-next.actr */,
 				501DB7232416B250000956AA /* init.actr */,
 				50CB1DEB24002F8200F81C26 /* maze.actr */,
+				506B58F824C5DC0200C62BE2 /* bottleneck.actr */,
+				506B58FA24C7317B00C62BE2 /* move.actr */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,9 +257,11 @@
 				501DB7272416B250000956AA /* determine-path.actr in Resources */,
 				50FFC93324180978001D9924 /* backtrack.actr in Resources */,
 				501DB7282416B250000956AA /* find-next.actr in Resources */,
+				506B58FB24C7317B00C62BE2 /* move.actr in Resources */,
 				50CB1DEC24002F8200F81C26 /* maze.actr in Resources */,
 				50FFC9312417F3EF001D9924 /* is-dead-end.actr in Resources */,
 				501DB7262416B250000956AA /* init.actr in Resources */,
+				506B58F924C5DC0200C62BE2 /* bottleneck.actr in Resources */,
 				F0784FD823F2CDE700645218 /* Main.storyboard in Resources */,
 				F0784FDB23F2CDE700645218 /* LaunchScreen.storyboard in Resources */,
 				501DB72A2416B346000956AA /* move-attention.actr in Resources */,

@@ -1,0 +1,64 @@
+(p move1
+    =goal>
+        state move
+    =action>
+        current =current
+    =imaginal>
+        - chosen-id =current
+        chosen-direction =dir
+        - target-id =current
+==>
+    +action>
+        cmd move
+        direction =dir
+    =imaginal>
+    =goal>
+        state move
+)
+
+ (p move2
+     =goal>
+         state move
+     =action>
+         current =current
+     =imaginal>
+         - chosen-id =current
+         chosen-direction =dir
+         target-id =current
+ ==>
+     +action>
+         cmd move
+         direction =dir
+     =imaginal>
+     =goal>
+         state move
+         next find-bottleneck
+ )
+
+(p move-finish1
+    =goal>
+        state move
+        - next find-bottleneck
+    =action>
+        current =current
+    =imaginal>
+        chosen-id =current
+==>
+    =goal>
+        state is-dead-end
+    =imaginal>
+)
+
+ (p move-finish2
+     =goal>
+         state move
+         next find-bottleneck
+     =action>
+         current =current
+     =imaginal>
+         chosen-id =current
+ ==>
+     =goal>
+         state find-bottleneck
+     =imaginal>
+ )

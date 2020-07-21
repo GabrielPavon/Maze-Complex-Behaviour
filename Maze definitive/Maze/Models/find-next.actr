@@ -7,8 +7,8 @@
     =goal>
         state find-next
     =imaginal>
-        finish =finish
-        - tried left
+        target =target
+        - tried-left true
     =visual>
         - left nil
         left-attended false
@@ -17,11 +17,14 @@
         kind intersection
         :attended nil
         :nearest current
-        :nearest2 =finish
+        :nearest2 =target
         screen-y current
     +imaginal>
         finish =finish
-        tried left
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        tried-left true
     =visual>
     =goal>
         state check-find
@@ -33,7 +36,11 @@
         state find-next
     =imaginal>
         finish =finish
-        - tried right
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        - tried-right true
     =visual>
         - right nil
         right-attended false
@@ -42,11 +49,15 @@
         kind intersection
         :attended nil
         :nearest current
-        :nearest2 =finish
+        :nearest2 =target
         screen-y current
     +imaginal>
         finish =finish
-        tried right
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        tried-right true
     =visual>
     =goal>
         state check-find
@@ -58,7 +69,11 @@
         state find-next
     =imaginal>
         finish =finish
-        - tried up
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        - tried-up true
     =visual>
         - up nil
         up-attended false
@@ -71,7 +86,11 @@
         screen-x current
     +imaginal>
         finish =finish
-        tried up
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        tried-up true
     =visual>
     =goal>
         state check-find
@@ -83,7 +102,11 @@
         state find-next
     =imaginal>
         finish =finish
-        - tried down
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        - tried-down true
     =visual>
         - down nil
         down-attended false
@@ -92,11 +115,15 @@
         kind intersection
         :attended nil
         :nearest current
-        :nearest2 =finish
+        :nearest2 =target
         screen-x current
     +imaginal>
         finish =finish
-        tried down
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        tried-down true
     =visual>
     =goal>
         state check-find
@@ -110,13 +137,14 @@
         - left nil
         left-attended false
     =imaginal>
-        tried left
+        tried-left true
 ==>
     +visual-location>
         kind finish
     =visual>
     =goal>
         state check-find
+    =imaginal>
 )
 
 ;; No intersection found. Check for finish.
@@ -127,13 +155,14 @@
         - right nil
         right-attended false
     =imaginal>
-        tried right
+        tried-right true
 ==>
     +visual-location>
         kind finish
     =visual>
     =goal>
         state check-find
+    =imaginal>
 )
 
 ;; No intersection found. Check for finish.
@@ -144,13 +173,14 @@
         - up nil
         up-attended false
     =imaginal>
-        tried up
+        tried-up true
 ==>
     +visual-location>
         kind finish
     =visual>
     =goal>
         state check-find
+    =imaginal>
 )
 
 ;; No intersection found. Check for finish.
@@ -161,13 +191,14 @@
         - down nil
         down-attended false
     =imaginal>
-        tried down
+        tried-down true
 ==>
     +visual-location>
         kind finish
     =visual>
     =goal>
         state check-find
+    =imaginal>
 )
 
 ;; There was an intersection on our x-axis. Determine if there is a path there.
