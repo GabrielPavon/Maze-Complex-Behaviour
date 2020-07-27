@@ -37,10 +37,18 @@
         screen-pos =pos
     =imaginal>
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
 ==>
     +imaginal>
         chosen-direction =dir
         finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
     +visual>
         cmd move-attention
         screen-pos =pos

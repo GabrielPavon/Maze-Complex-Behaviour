@@ -19,6 +19,7 @@
         :nearest current
         :nearest2 =target
         screen-y current
+        < screen-x current
     +imaginal>
         finish =finish
         finish-x =finish-x
@@ -51,6 +52,7 @@
         :nearest current
         :nearest2 =target
         screen-y current
+        > screen-x current
     +imaginal>
         finish =finish
         finish-x =finish-x
@@ -84,6 +86,7 @@
         :nearest current
         :nearest2 =finish
         screen-x current
+        < screen-y current
     +imaginal>
         finish =finish
         finish-x =finish-x
@@ -117,6 +120,7 @@
         :nearest current
         :nearest2 =target
         screen-x current
+        > screen-y current
     +imaginal>
         finish =finish
         finish-x =finish-x

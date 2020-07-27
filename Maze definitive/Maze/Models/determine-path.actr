@@ -167,6 +167,11 @@
     =imaginal>
         chosen-id =id
         chosen-direction =dir
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
     =visual>
         id =id
 ==>
@@ -175,7 +180,18 @@
     +action>
         cmd move
         direction =dir
-    =imaginal>
+    +imaginal>
+        chosen-id =id
+        chosen-direction =dir
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
+        target =target
+        target-id =target-id
+        tried-up false
+        tried-down false
+        tried-left false
+        tried-right false
     =visual>
 )
 

@@ -21,8 +21,8 @@
     ?visual-location>
         buffer full
     =imaginal>
-        start =start
         target =target
+        target-id =target-id
         finish =finish
         finish-x =finish-x
         finish-y =finish-y
@@ -34,8 +34,8 @@
         previous-x =previous-x
         previous-y =previous-y
         previous-pos =previous-pos
-        start =start
         target =target
+        target-id =target-id
         finish =finish
         finish-x =finish-x
         finish-y =finish-y
@@ -46,9 +46,19 @@
          state check-find-bottleneck
      ?visual-location>
          buffer failure
+     =imaginal>
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
  ==>
      =goal>
          state find-next
+     =imaginal>
+        target =finish
+        target-id 0
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
  )
 
  (p check-horizontal-bottleneck-viability1
@@ -60,11 +70,13 @@
         left-attended false
         right-attended false
         > screen-x =previous-x
+    =visual-location>
  ==>
      =goal>
          state check-bottleneck-viability2
      =imaginal>
      =visual>
+     =visual-location>
  )
  
  (p check-horizontal-bottleneck-viability1-fail
@@ -73,6 +85,9 @@
      =imaginal>
         previous-x =finish-x
         previous-pos =pos
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
      =visual>
         left-attended false
         right-attended false
@@ -81,6 +96,11 @@
      =goal>
          state find-next
      =imaginal>
+        target =finish
+        target-id 0
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
      +visual>
         cmd move-attention
         screen-pos =pos
@@ -91,7 +111,6 @@
          state check-bottleneck-viability2
      =imaginal>
         previous-pos =previous-pos
-        start =start
         finish =finish
         finish-x =finish-x
         finish-y =finish-y
@@ -100,13 +119,13 @@
         right-attended false
         < screen-x =finish-x
         id =id
+    =visual-location>
  ==>
      =goal>
          state find-next
      +imaginal>
-        target =visual
+        target =visual-location
         target-id =id
-        start =start
         finish =finish
         finish-x =finish-x
         finish-y =finish-y
@@ -121,6 +140,8 @@
      =imaginal>
         finish-x =finish-x
         previous-pos =pos
+        finish =finish
+        finish-y =finish-y
      =visual>
         left-attended false
         right-attended false
@@ -129,6 +150,11 @@
      =goal>
          state find-next
      =imaginal>
+        target =finish
+        target-id 0
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
      +visual>
          cmd move-attention
          screen-pos =pos
@@ -143,11 +169,13 @@
         up-attended false
         down-attended false
         > screen-y =previous-y
+    =visual-location>
  ==>
      =goal>
          state check-bottleneck-viability2
      =imaginal>
      =visual>
+     =visual-location>
  )
  
  (p check-vertical-bottleneck-viability1-fail
@@ -156,6 +184,9 @@
      =imaginal>
         previous-y =previous-y
         previous-pos =pos
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
      =visual>
         up-attended false
         down-attended false
@@ -164,6 +195,11 @@
      =goal>
          state find-next
      =imaginal>
+        target =finish
+        target-id 0
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
      +visual>
         cmd move-attention
         screen-pos =pos
@@ -174,7 +210,6 @@
          state check-bottleneck-viability2
      =imaginal>
         previous-pos =previous-pos
-        start =start
         finish =finish
         finish-x =finish-x
         finish-y =finish-y
@@ -183,13 +218,13 @@
         down-attended false
         < screen-y =finish-y
         id =id
+    =visual-location>
  ==>
      =goal>
          state find-next
      +imaginal>
-         target =visual
+         target =visual-location
          target-id =id
-         start =start
          finish =finish
          finish-x =finish-x
          finish-y =finish-y
@@ -204,6 +239,8 @@
      =imaginal>
         finish-y =finish-y
         previous-pos =pos
+        finish =finish
+        finish-x =finish-x
      =visual>
         up-attended false
         down-attended false
@@ -212,6 +249,11 @@
      =goal>
          state find-next
      =imaginal>
+        target =finish
+        target-id 0
+        finish =finish
+        finish-x =finish-x
+        finish-y =finish-y
      +visual>
         cmd move-attention
         screen-pos =pos

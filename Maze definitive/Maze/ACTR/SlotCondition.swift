@@ -77,7 +77,11 @@ struct SlotCondition: CustomStringConvertible {
                     }
                 }
                 
-                    testValue = instVal!
+                if instVal == nil {
+                    return false
+                }
+                
+                testValue = instVal!
 //                    println("\(text) is an existing variable with value \(instVal!)")
                 
             }

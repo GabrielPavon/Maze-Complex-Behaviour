@@ -253,8 +253,16 @@ class Vision {
                 switch (slot) {
                 case ("screen-x"):
                     candidates = candidates.filter({currentlyAttended!.x == $0.x})
+                case ("<screen-x"):
+                    candidates = candidates.filter({currentlyAttended!.x > $0.x})
+                case (">screen-x"):
+                    candidates = candidates.filter({currentlyAttended!.x < $0.x})
                 case ("screen-y"):
                     candidates = candidates.filter({currentlyAttended!.y == $0.y})
+                case ("<screen-y"):
+                    candidates = candidates.filter({currentlyAttended!.y > $0.y})
+                case (">screen-y"):
+                    candidates = candidates.filter({currentlyAttended!.y < $0.y})
                 case ("width"):
                     candidates = candidates.filter({currentlyAttended!.w == $0.w})
                 case ("height"):

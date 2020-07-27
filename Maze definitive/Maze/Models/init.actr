@@ -20,13 +20,10 @@
 )
 
 ;; Encode start location in imaginal buffer and look for finish.
-(p encode-start-find-finish
+(p find-finish
     =goal>
-        state encode-start
-    =visual-location>
+        state find-finish
 ==>
-    +imaginal>
-        start =visual-location
     +visual-location>
         kind finish
     =goal>
@@ -40,15 +37,13 @@
     =visual-location>
         screen-x =finish-x
         screen-y =finish-y
-    =imaginal>
-        start =start
 ==>
     +imaginal>
-        start =start
         finish =visual-location
         target =visual-location
         finish-x =finish-x
         finish-y =finish-y
+        target-id 0
     =goal>
         state find-bottleneck
 )

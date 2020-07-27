@@ -42,7 +42,7 @@ class CellView: UIView {
                 let viewY = view.frame.origin.y
                 
             
-                if view.type == "corridor" { continue }
+                if view.type == "corridor" || view.type == "bottleneck" { continue }
                    
                 if self.frame.origin.x == viewX && self.frame.origin.y != viewY {
                     if self.pathUp {

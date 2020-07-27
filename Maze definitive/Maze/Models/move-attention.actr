@@ -25,7 +25,7 @@
     =visual>
 ==>
     =goal>
-        state encode-start
+        state find-finish
     =visual>
 )
 
@@ -34,10 +34,12 @@
         previous check-find-bottleneck
         state after-move-attention
     =visual>
+    =visual-location>
 ==>
     =goal>
         state check-bottleneck-viability1
     =visual>
+    =visual-location>
 )
 
 ;; What to do after attention is moved to new intersection.
