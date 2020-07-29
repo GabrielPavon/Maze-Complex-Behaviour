@@ -8,7 +8,6 @@
         state find-next
     =imaginal>
         target =target
-        - tried-left true
     =visual>
         - left nil
         left-attended false
@@ -20,12 +19,7 @@
         :nearest2 =target
         screen-y current
         < screen-x current
-    +imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
-        target =target
-        tried-left true
+    =imaginal>
     =visual>
     =goal>
         state check-find
@@ -36,12 +30,7 @@
     =goal>
         state find-next
     =imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
         target =target
-        target-id =target-id
-        - tried-right true
     =visual>
         - right nil
         right-attended false
@@ -53,13 +42,7 @@
         :nearest2 =target
         screen-y current
         > screen-x current
-    +imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
-        target =target
-        target-id =target-id
-        tried-right true
+    =imaginal>
     =visual>
     =goal>
         state check-find
@@ -70,12 +53,7 @@
     =goal>
         state find-next
     =imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
         target =target
-        target-id =target-id
-        - tried-up true
     =visual>
         - up nil
         up-attended false
@@ -84,16 +62,10 @@
         kind intersection
         :attended nil
         :nearest current
-        :nearest2 =finish
+        :nearest2 =target
         screen-x current
         < screen-y current
-    +imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
-        target =target
-        target-id =target-id
-        tried-up true
+    =imaginal>
     =visual>
     =goal>
         state check-find
@@ -104,12 +76,7 @@
     =goal>
         state find-next
     =imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
         target =target
-        target-id =target-id
-        - tried-down true
     =visual>
         - down nil
         down-attended false
@@ -121,13 +88,7 @@
         :nearest2 =target
         screen-x current
         > screen-y current
-    +imaginal>
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
-        target =target
-        target-id =target-id
-        tried-down true
+    =imaginal>
     =visual>
     =goal>
         state check-find

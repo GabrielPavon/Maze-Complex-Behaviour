@@ -48,7 +48,7 @@ class MazeView: UIView {
     var startColor: UIColor! = UIColor.green
     
     @IBInspectable
-    var finishColor: UIColor! = UIColor.blue
+    var finishColor: UIColor! = UIColor.orange
     
     @IBInspectable
     var borderColor: UIColor! = UIColor.red
@@ -226,8 +226,6 @@ class MazeView: UIView {
         
         if pos == dataSource.startCellFor(self) {
             view.type = "start"
-        } else if pos == dataSource.finishCellFor(self) {
-            view.type = "finish"
         } else if pos == dataSource.bottleneckCellFor(self) {
             view.type = "bottleneck"
         }
@@ -311,8 +309,18 @@ class MazeView: UIView {
         func createCellView(_ pos: Position, with color: UIColor) {
             
             let view = CellView(frame: CGRect(origin: position2CGPoint(pos), size: CGSize(width: mazeview.cellSize, height: mazeview.cellSize)))
-
+                
             view.backgroundColor = color
+            
+            if color.isEqual(UIColor.green) {
+                view.color = "green"
+            } else if color.isEqual(UIColor.orange) {
+                view.color = "orange"
+            } else if color.isEqual(UIColor.gray) {
+                view.color = "gray"
+            } else {
+                view.color = "black"
+            }
             
             mazeview.updateCellViewPaths(view, pos)
             

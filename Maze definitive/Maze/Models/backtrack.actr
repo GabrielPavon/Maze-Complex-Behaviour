@@ -1,7 +1,7 @@
 ;;; Model for the maze
 ;;;
 
-;; TODO use previous screen-pos to move attention and previous id to move.
+;; Retrieve the previous intersection from declarative memory.
 (p backtrack-retrieve
     =goal>
         state backtrack
@@ -19,6 +19,7 @@
     =visual>
 )
 
+;; If the previous intersection has all sides already checked
 (p backtrack-move-start
     =goal>
         state backtrack-move

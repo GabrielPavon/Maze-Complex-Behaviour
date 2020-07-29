@@ -43,77 +43,11 @@
 )
 
 ;; What to do after attention is moved to new intersection.
-(p after-move-attention-determine-left
+(p after-move-attention-determine-path
     =goal>
         previous determine-path
         state after-move-attention
-    =visual>
-    =imaginal>
-        chosen-direction left
-        previous-id =previous
 ==>
     =goal>
         state check-path
-    =visual>
-        origin =previous
-        right-attended true
-        origin-dir right
-    =imaginal>
-)
-
-;; What to do after attention is moved to new intersection.
-(p after-move-attention-determine-right
-    =goal>
-        previous determine-path
-        state after-move-attention
-    =visual>
-    =imaginal>
-        previous-id =previous
-        chosen-direction right
-==>
-    =goal>
-        state check-path
-    =visual>
-        origin =previous
-        left-attended true
-        origin-dir left
-    =imaginal>
-)
-
-;; What to do after attention is moved to new intersection.
-(p after-move-attention-determine-up
-    =goal>
-        state after-move-attention
-    =visual>
-    =imaginal>
-        previous-id =previous
-        chosen-direction up
-==>
-    =goal>
-        previous move-attention
-        state check-path
-    =visual>
-        origin =previous
-        down-attended true
-        origin-dir down
-    =imaginal>
-)
-
-;; What to do after attention is moved to new intersection.
-(p after-move-attention-determine-down
-    =goal>
-        previous determine-path
-        state after-move-attention
-    =visual>
-    =imaginal>
-        previous-id =previous
-        chosen-direction down
-==>
-    =goal>
-        state check-path
-    =visual>
-        origin =previous
-        up-attended true
-        origin-dir up
-    =imaginal>
 )

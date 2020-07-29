@@ -161,17 +161,13 @@
     =visual-location>
 )
 
-(p check-path
+(p check-path-left
     =goal>
         state check-path
     =imaginal>
         chosen-id =id
-        chosen-direction =dir
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
-        target =target
-        target-id =target-id
+        previous-id =previous
+        chosen-direction left
     =visual>
         id =id
 ==>
@@ -179,20 +175,78 @@
         state move
     +action>
         cmd move
-        direction =dir
-    +imaginal>
-        chosen-id =id
-        chosen-direction =dir
-        finish =finish
-        finish-x =finish-x
-        finish-y =finish-y
-        target =target
-        target-id =target-id
-        tried-up false
-        tried-down false
-        tried-left false
-        tried-right false
+        direction left
+    =imaginal>
     =visual>
+        origin =previous
+        right-attended true
+        origin-dir right
+)
+
+(p check-path-right
+    =goal>
+        state check-path
+    =imaginal>
+        chosen-id =id
+        chosen-direction right
+        previous-id =previous
+    =visual>
+        id =id
+==>
+    =goal>
+        state move
+    +action>
+        cmd move
+        direction right
+    =imaginal>
+    =visual>
+       origin =previous
+       left-attended true
+       origin-dir left
+)
+
+(p check-path-up
+    =goal>
+        state check-path
+    =imaginal>
+        chosen-id =id
+        chosen-direction up
+        previous-id =previous
+    =visual>
+        id =id
+==>
+    =goal>
+        state move
+    +action>
+        cmd move
+        direction up
+    =imaginal>
+    =visual>
+        origin =previous
+        down-attended true
+        origin-dir down
+)
+
+(p check-path-down
+    =goal>
+        state check-path
+    =imaginal>
+        chosen-id =id
+        chosen-direction down
+        previous-id =previous
+    =visual>
+        id =id
+==>
+    =goal>
+        state move
+    +action>
+        cmd move
+        direction down
+    =imaginal>
+    =visual>
+        origin =previous
+        up-attended true
+        origin-dir up
 )
 
 (p check-path-fail
@@ -209,6 +263,7 @@
     +visual>
         cmd move-attention
         screen-pos =previous
+    =imaginal>
 )
 
 

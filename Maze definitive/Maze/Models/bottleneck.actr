@@ -52,7 +52,7 @@
         finish-y =finish-y
  ==>
      =goal>
-         state find-next
+         state is-dead-end
      =imaginal>
         target =finish
         target-id 0

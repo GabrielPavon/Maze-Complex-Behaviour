@@ -12,6 +12,7 @@ import UIKit
 class CellView: UIView {
     var id = "-1"
     var type = "none"
+    var color = "black"
     // Like a clock starting at 12
     // Up Right Down Left
     var pathUp = false

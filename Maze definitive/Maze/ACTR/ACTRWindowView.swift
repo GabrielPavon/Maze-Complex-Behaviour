@@ -71,6 +71,7 @@ extension CellView {
         return [
             "id": self.id,
             "type": self.type,
+            "color": self.color,
             "up": self.neighbourUp ?? "nil",
             "down": self.neighbourDown ?? "nil",
             "left": self.neighbourLeft ?? "nil",

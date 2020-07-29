@@ -6,6 +6,7 @@
 )
 
 (goal-focus goal)
+(sgp :rt -5)
 
 ;; Find the start.
 (p find-start
@@ -25,7 +26,8 @@
         state find-finish
 ==>
     +visual-location>
-        kind finish
+        kind intersection
+        color orange
     =goal>
         state encode-finish
 )

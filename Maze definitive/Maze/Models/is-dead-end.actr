@@ -6,6 +6,7 @@
         state is-dead-end
     =visual>
         isa intersection
+        color gray
         left-attended true
         right-attended true
         up-attended true
@@ -20,7 +21,8 @@
     =goal>
         state is-dead-end
     =visual>
-        isa finish
+        isa intersection
+        color orange
 ==>
     +action>
         cmd done
@@ -30,6 +32,7 @@
     =goal>
         state is-dead-end
     =visual>
+        - color orange
         left-attended false
 ==>
     =goal>
@@ -41,6 +44,7 @@
     =goal>
         state is-dead-end
     =visual>
+        - color orange
         right-attended false
 ==>
     =goal>
@@ -52,6 +56,7 @@
     =goal>
         state is-dead-end
     =visual>
+        - color orange
         up-attended false
 ==>
     =goal>
@@ -63,6 +68,7 @@
     =goal>
         state is-dead-end
     =visual>
+        - color orange
         down-attended false
 ==>
     =goal>
