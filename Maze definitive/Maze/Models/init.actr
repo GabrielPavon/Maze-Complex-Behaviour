@@ -1,4 +1,4 @@
-;;; Model for the maze
+;;; Initializing the process
 ;;;
 
 (add-dm
@@ -8,7 +8,7 @@
 (goal-focus goal)
 (sgp :rt -5)
 
-;; Find the start.
+;; Find the start. Move attention there.
 (p find-start
     =goal>
         state find-start
@@ -20,7 +20,7 @@
         state move-attention
 )
 
-;; Encode start location in imaginal buffer and look for finish.
+;; Find the finish. Encode it.
 (p find-finish
     =goal>
         state find-finish
@@ -32,7 +32,7 @@
         state encode-finish
 )
 
-;; Encode finish in imaginal buffer.
+;; Encode finish in imaginal buffer. Find a bottleneck.
 (p encode-finish
     =goal>
         state encode-finish

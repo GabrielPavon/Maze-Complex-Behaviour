@@ -316,6 +316,7 @@ class Vision {
             }
         }
         
+        // Filter the current candidates against a second nearest location.
         if request.slotvals[":nearest2"] != nil {
             var toCheck: VisualObject? = nil
             

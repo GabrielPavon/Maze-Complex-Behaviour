@@ -1,7 +1,6 @@
-;;; Model for the maze
-;;;
+;;; Determining if newly found intersection is connected to our current location.
 
-;; Determine if there is a path from our current position to the visual-location on our left.
+;; Determine if there is a path from our current position to the visual-location on our left. Move attention there.
 (p determine-path-left
     =goal>
         state determine-path
@@ -41,7 +40,7 @@
     =visual-location>
 )
 
-;; Determine if there is a path from our current position to the visual-location on our right.
+;; Determine if there is a path from our current position to the visual-location on our right. Move attention there.
 (p determine-path-right
     =goal>
         state determine-path
@@ -81,7 +80,7 @@
     =visual-location>
 )
 
-;; Determine if there is a path from our current position to the visual-location upwards.
+;; Determine if there is a path from our current position to the visual-location upwards. Move attention there.
 (p determine-path-up
     =goal>
         state determine-path
@@ -121,7 +120,7 @@
     =visual-location>
 )
 
-;; Determine if there is a path from our current position to the visual-location downwards.
+;; Determine if there is a path from our current position to the visual-location downwards. Move attention there.
 (p determine-path-down
     =goal>
         state determine-path
@@ -161,6 +160,7 @@
     =visual-location>
 )
 
+;; Check if the left attended cell is the cell we expect. Move in that direction.
 (p check-path-left
     =goal>
         state check-path
@@ -183,6 +183,7 @@
         origin-dir right
 )
 
+;; Check if the right attended cell is the cell we expect. Move in that direction.
 (p check-path-right
     =goal>
         state check-path
@@ -205,6 +206,7 @@
        origin-dir left
 )
 
+;; Check if the up attended cell is the cell we expect. Move in that direction.
 (p check-path-up
     =goal>
         state check-path
@@ -227,6 +229,7 @@
         origin-dir down
 )
 
+;; Check if the down attended cell is the cell we expect. Move in that direction.
 (p check-path-down
     =goal>
         state check-path
@@ -249,6 +252,7 @@
         origin-dir up
 )
 
+;; The attended cell is not the cell we expect, so there's no path there from our current position. Find the next intersection.
 (p check-path-fail
     =goal>
         state check-path

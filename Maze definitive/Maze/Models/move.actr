@@ -1,3 +1,6 @@
+;;; Moving the computer player
+
+;; Move in the chosen direction as long as the current location doesn't match our target location or a bottleneck.
 (p move1
     =goal>
         state move
@@ -16,6 +19,7 @@
         state move
 )
 
+;; Move in the chosen direction, but our current location matches a bottleneck. Find a new bottleneck when done moving.
  (p move2
      =goal>
          state move
@@ -35,6 +39,7 @@
          next find-bottleneck
  )
 
+;; Moved to our target location without encountering bottlenecks. Check for dead end.
 (p move-finish1
     =goal>
         state move
@@ -49,6 +54,7 @@
     =imaginal>
 )
 
+;; Moved to our target location while encountering a bottleneck. Find a new bottleneck.
  (p move-finish2
      =goal>
          state move

@@ -1,6 +1,6 @@
 ;;; Model for the maze
-;;;
 
+;; Comments describe what the production does, as well as what the next step is.
 
 (load init)
 (load find-next)

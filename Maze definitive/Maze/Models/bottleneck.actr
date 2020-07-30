@@ -1,3 +1,6 @@
+;;; Checking for bottlenecks
+
+;; Find a bottleneck.
 (p find-bottleneck
     =goal>
         state find-bottleneck
@@ -11,6 +14,7 @@
         state check-find-bottleneck
 )
 
+;; There was a bottleneck found. Move attention there.
 (p check-success-bottleneck
     =goal>
         state check-find-bottleneck
@@ -41,6 +45,7 @@
         finish-y =finish-y
 )
 
+;; There was no bottleneck found. Check for dead end.
  (p check-fail-bottleneck
      =goal>
          state check-find-bottleneck
@@ -61,7 +66,8 @@
         finish-y =finish-y
  )
 
- (p check-horizontal-bottleneck-viability1
+;; Check if a horizontal bottleneck is to the right of our current location.
+(p check-horizontal-bottleneck-viability1
      =goal>
          state check-bottleneck-viability1
      =imaginal>
@@ -79,6 +85,7 @@
      =visual-location>
  )
  
+ ;; Horizontal bottleneck is not to the right of our current location. Find a new intersection to move to.
  (p check-horizontal-bottleneck-viability1-fail
      =goal>
          state check-bottleneck-viability1
@@ -106,6 +113,7 @@
         screen-pos =pos
  )
  
+ ;; Check if a horizontal bottleneck is to left of the finish. Find a new intersection to move to.
  (p check-horizontal-bottleneck-viability2
      =goal>
          state check-bottleneck-viability2
@@ -134,6 +142,7 @@
         screen-pos =previous-pos
  )
  
+ ;; Horizontal bottleneck is not to the left of the finish. Find a new intersection to move to.
  (p check-horizontal-bottleneck-viability2-fail
      =goal>
          state check-bottleneck-viability2
@@ -160,6 +169,7 @@
          screen-pos =pos
  )
  
+;; Check if a vertical bottleneck is downwards of our current location.
  (p check-vertical-bottleneck-viability1
      =goal>
          state check-bottleneck-viability1
@@ -178,6 +188,7 @@
      =visual-location>
  )
  
+ ;; Vertical bottleneck is not downwards of our current location. Find a new intersection to move to.
  (p check-vertical-bottleneck-viability1-fail
      =goal>
          state check-bottleneck-viability1
@@ -205,6 +216,7 @@
         screen-pos =pos
  )
  
+ ;; Check if a vertical bottleneck is upwards of the finish. Find a new intersection to move to.
  (p check-vertical-bottleneck-viability2
      =goal>
          state check-bottleneck-viability2
@@ -233,6 +245,7 @@
          screen-pos =previous-pos
  )
  
+ ;; Vertical bottleneck is not upwards of the finish. Find a new intersection to move to.
  (p check-vertical-bottleneck-viability2-fail
      =goal>
          state check-bottleneck-viability2

@@ -1,8 +1,6 @@
-;;; Model for the maze
-;;;
+;;; Finding the next intersction to move to
 
-;; Is there an intersection on our current x-axis?
-
+;; Look for an intersection on our left.
 (p find-next-left
     =goal>
         state find-next
@@ -25,7 +23,7 @@
         state check-find
 )
 
-;; Is there an intersection on our current x-axis?
+;; Look for an intersection on our right.
 (p find-next-right
     =goal>
         state find-next
@@ -48,7 +46,7 @@
         state check-find
 )
 
-;; Is there an intersection on our current x-axis?
+;; Look for an intersection upwards.
 (p find-next-up
     =goal>
         state find-next
@@ -71,7 +69,7 @@
         state check-find
 )
 
-;; There was no intersection on our x-axis. Check the y-axis.
+;; Look for an intersection downwards.
 (p find-next-down
     =goal>
         state find-next
@@ -94,79 +92,7 @@
         state check-find
 )
 
-;; No intersection found. Check for finish.
-(p find-finish-left
-    =goal>
-        state find-next
-    =visual>
-        - left nil
-        left-attended false
-    =imaginal>
-        tried-left true
-==>
-    +visual-location>
-        kind finish
-    =visual>
-    =goal>
-        state check-find
-    =imaginal>
-)
-
-;; No intersection found. Check for finish.
-(p find-finish-right
-    =goal>
-        state find-next
-    =visual>
-        - right nil
-        right-attended false
-    =imaginal>
-        tried-right true
-==>
-    +visual-location>
-        kind finish
-    =visual>
-    =goal>
-        state check-find
-    =imaginal>
-)
-
-;; No intersection found. Check for finish.
-(p find-finish-up
-    =goal>
-        state find-next
-    =visual>
-        - up nil
-        up-attended false
-    =imaginal>
-        tried-up true
-==>
-    +visual-location>
-        kind finish
-    =visual>
-    =goal>
-        state check-find
-    =imaginal>
-)
-
-;; No intersection found. Check for finish.
-(p find-finish-down
-    =goal>
-        state find-next
-    =visual>
-        - down nil
-        down-attended false
-    =imaginal>
-        tried-down true
-==>
-    +visual-location>
-        kind finish
-    =visual>
-    =goal>
-        state check-find
-    =imaginal>
-)
-
-;; There was an intersection on our x-axis. Determine if there is a path there.
+;; There was an intersection found. Determine if there's a path there from our current location.
 (p check-success
     =goal>
         state check-find
@@ -177,7 +103,7 @@
         state determine-path
 )
 
-;; There was no intersection on our y-axis either. Back to square 1.
+;; There was no intersection found. Find a new intersection to move to.
 (p check-fail
     =goal>
         state check-find

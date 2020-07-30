@@ -1,5 +1,4 @@
-;;; Model for the maze
-;;;
+;;; Move attention
 
 ;; Move the attention to a visual location.
 (p move-attention
@@ -17,7 +16,7 @@
         state after-move-attention
 )
 
-;; What to do after attention is moved to start.
+;; What to do after attention is moved to start. Find finish.
 (p after-move-attention-start
     =goal>
         previous find-start
@@ -29,6 +28,7 @@
     =visual>
 )
 
+;; What to do after attention is moved to a bottleneck. Check the bottleneck's viability.
 (p after-move-attention-bottleneck
     =goal>
         previous check-find-bottleneck
@@ -42,7 +42,7 @@
     =visual-location>
 )
 
-;; What to do after attention is moved to new intersection.
+;; What to do after attention is moved to new intersection. Check for a path there.
 (p after-move-attention-determine-path
     =goal>
         previous determine-path

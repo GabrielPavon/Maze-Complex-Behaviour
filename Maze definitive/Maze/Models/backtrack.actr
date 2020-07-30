@@ -1,5 +1,4 @@
-;;; Model for the maze
-;;;
+;;; Backtracking
 
 ;; Retrieve the previous intersection from declarative memory.
 (p backtrack-retrieve
@@ -19,7 +18,7 @@
     =visual>
 )
 
-;; If the previous intersection has all sides already checked
+;; If the previous intersection has been succesfully retrieved, move on block in that direction.
 (p backtrack-move-start
     =goal>
         state backtrack-move
@@ -59,6 +58,7 @@
         current =current
 )
 
+;; Move one block in the direction of the previous intersection.
 (p backtrack-move
     =goal>
         state backtrack-move
@@ -78,6 +78,7 @@
     =visual>
 )
 
+;; The previous intersection has been reached.
 (p backtrack-move-finish
     =goal>
         state backtrack-move

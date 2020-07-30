@@ -1,6 +1,6 @@
-;;; Model for the maze
-;;;
+;;; Checks for dead ends
 
+;; Check if the currently attended cell is a dead end. Start backtracking.
 (p is-dead-end
     =goal>
         state is-dead-end
@@ -17,6 +17,7 @@
     =visual>
 )
 
+;; Check if the currently attended cell is the finish. DONE
 (p is-finish
     =goal>
         state is-dead-end
@@ -28,6 +29,7 @@
         cmd done
 )
 
+;; The currently attended cell is not a dead end, because the left entrance is free. Find a new intersection to move to.
 (p is-no-dead-end-left
     =goal>
         state is-dead-end
@@ -40,6 +42,7 @@
     =visual>
 )
 
+;; The currently attended cell is not a dead end, because the right entrance is free. Find a new intersection to move to.
 (p is-no-dead-end-right
     =goal>
         state is-dead-end
@@ -52,6 +55,7 @@
     =visual>
 )
 
+;; The currently attended cell is not a dead end, because the up entrance is free. Find a new intersection to move to.
 (p is-no-dead-end-up
     =goal>
         state is-dead-end
@@ -64,6 +68,7 @@
     =visual>
 )
 
+;; The currently attended cell is not a dead end, because the down entrance is free. Find a new intersection to move to.
 (p is-no-dead-end-down
     =goal>
         state is-dead-end
