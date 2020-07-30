@@ -223,10 +223,7 @@ class MazeView: UIView {
             view.type = "bad call: no openings?"
         }
         
-        
-        if pos == dataSource.startCellFor(self) {
-            view.type = "start"
-        } else if pos == dataSource.bottleneckCellFor(self) {
+        if pos == dataSource.bottleneckCellFor(self) {
             view.type = "bottleneck"
         }
     }

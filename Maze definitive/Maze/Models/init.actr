@@ -14,7 +14,8 @@
         state find-start
 ==>
     +visual-location>
-        kind start
+        kind intersection
+        color green
     =goal>
         previous find-start
         state move-attention
