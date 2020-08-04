@@ -178,7 +178,7 @@ class MazeView: UIView {
                           height: cellSize*CGFloat(rows) + CGFloat(lineWidth))
         
         
-        UIImage(named: "darkstone.jpg")!.draw(in: CGRect(origin: origin, size: size))
+        UIImage(named: "darkstone")!.draw(in: CGRect(origin: origin, size: size))
 
         let path = UIBezierPath(rect: CGRect(origin: origin, size: size))
         
@@ -329,7 +329,7 @@ class MazeView: UIView {
             }
             
             if pos != dataSource.startCellFor(mazeview) && pos != dataSource.finishCellFor(mazeview) {
-                view.image = UIImage(named: "grass.jpeg")
+                view.image = UIImage(named: "grass")
                 view.contentMode = .scaleToFill
                 view.clipsToBounds = true
             }

@@ -98,7 +98,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="49D-zk-Oq7">
-                                <rect key="frame" x="84.5" y="230" width="206" height="32"/>
+                                <rect key="frame" x="20" y="211" width="335" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VQg-Vf-o7C"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Small"/>
                                     <segment title="Medium"/>
@@ -122,6 +125,8 @@
                             <constraint firstItem="zn0-6H-GKU" firstAttribute="bottom" secondItem="SHK-0V-zHE" secondAttribute="bottom" constant="50" id="Kko-Jw-BiN"/>
                             <constraint firstItem="zn0-6H-GKU" firstAttribute="trailing" secondItem="cpl-f8-Wve" secondAttribute="trailing" constant="50" id="VtU-ar-Ahq"/>
                             <constraint firstItem="zn0-6H-GKU" firstAttribute="trailing" secondItem="SHK-0V-zHE" secondAttribute="trailing" constant="50" id="bvS-Sq-bss"/>
+                            <constraint firstItem="zn0-6H-GKU" firstAttribute="trailing" secondItem="49D-zk-Oq7" secondAttribute="trailing" constant="20" id="e2l-CZ-CZT"/>
+                            <constraint firstItem="49D-zk-Oq7" firstAttribute="leading" secondItem="zn0-6H-GKU" secondAttribute="leading" constant="20" id="icH-1Z-b92"/>
                             <constraint firstItem="cpl-f8-Wve" firstAttribute="top" secondItem="49D-zk-Oq7" secondAttribute="bottom" constant="58" id="uXs-lO-Vhl"/>
                             <constraint firstItem="zn0-6H-GKU" firstAttribute="trailing" secondItem="BNl-Qo-xb2" secondAttribute="trailing" constant="50" id="z2F-iV-bLa"/>
                             <constraint firstItem="Oku-0Q-4jE" firstAttribute="top" secondItem="cpl-f8-Wve" secondAttribute="bottom" constant="50" id="zF7-WO-HHM"/>
@@ -215,48 +220,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel Pavon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnd-fT-9fd">
-                                <rect key="frame" x="120" y="314.5" width="189.5" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daniel Salamon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPT-Rx-KMh">
-                                <rect key="frame" x="120" y="403" width="213.5" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Albert Hoekman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRt-D5-d4v">
-                                <rect key="frame" x="120" y="226" width="223" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="designer.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="X4b-da-Cod">
-                                <rect key="frame" x="19" y="398" width="97" height="48"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="programmer.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-uy-zdd">
-                                <rect key="frame" x="40" y="309" width="55" height="49"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="modeller.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="EMI-le-4nX">
-                                <rect key="frame" x="27" y="218" width="80" height="55"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="Yfc-7a-Uxb">
+                                <rect key="frame" x="20" y="228.5" width="335" height="210"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="x45-9H-sTz">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="modeller" translatesAutoresizingMaskIntoConstraints="NO" id="EMI-le-4nX">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Fhd-rw-wTy"/>
+                                                    <constraint firstAttribute="width" constant="40" id="y4Y-az-Pck"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albert Hoekman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRt-D5-d4v">
+                                                <rect key="frame" x="65" y="0.0" width="223" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="iWK-4D-ZF1">
+                                        <rect key="frame" x="0.0" y="85" width="254.5" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="programmer" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-uy-zdd">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="73B-46-mIg"/>
+                                                    <constraint firstAttribute="width" constant="40" id="x2O-6a-EbM"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel Pavón" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnd-fT-9fd">
+                                                <rect key="frame" x="65" y="0.0" width="189.5" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Gr8-n3-iFs">
+                                        <rect key="frame" x="0.0" y="170" width="278.5" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="designer" translatesAutoresizingMaskIntoConstraints="NO" id="X4b-da-Cod">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="4u9-hq-O3v"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Ba5-GF-3Fu"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daniel Salamon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPT-Rx-KMh">
+                                                <rect key="frame" x="65" y="0.0" width="213.5" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aRt-D5-d4v" firstAttribute="leading" secondItem="QZO-q2-FwZ" secondAttribute="leading" constant="120" id="0o5-nH-3ef"/>
-                            <constraint firstItem="jnd-fT-9fd" firstAttribute="centerY" secondItem="dU6-Ly-6L8" secondAttribute="centerY" id="7NC-Ei-QIe"/>
-                            <constraint firstItem="jPT-Rx-KMh" firstAttribute="leading" secondItem="QZO-q2-FwZ" secondAttribute="leading" constant="120" id="7PG-pR-dW0"/>
-                            <constraint firstItem="EMI-le-4nX" firstAttribute="top" secondItem="QZO-q2-FwZ" secondAttribute="top" constant="166" id="BRi-np-bw6"/>
-                            <constraint firstItem="X4b-da-Cod" firstAttribute="centerY" secondItem="jPT-Rx-KMh" secondAttribute="centerY" id="NPe-XK-1bE"/>
-                            <constraint firstItem="jnd-fT-9fd" firstAttribute="top" secondItem="aRt-D5-d4v" secondAttribute="bottom" constant="50" id="Yfs-AB-91f"/>
-                            <constraint firstItem="Ano-uy-zdd" firstAttribute="top" secondItem="EMI-le-4nX" secondAttribute="bottom" constant="20" id="cOw-CP-ibp"/>
-                            <constraint firstItem="Ano-uy-zdd" firstAttribute="centerY" secondItem="jnd-fT-9fd" secondAttribute="centerY" id="dzL-C8-Dab"/>
-                            <constraint firstItem="EMI-le-4nX" firstAttribute="centerY" secondItem="aRt-D5-d4v" secondAttribute="centerY" id="gwb-yX-TU1"/>
-                            <constraint firstItem="jPT-Rx-KMh" firstAttribute="top" secondItem="jnd-fT-9fd" secondAttribute="bottom" constant="50" id="jDl-0Y-9J1"/>
-                            <constraint firstItem="X4b-da-Cod" firstAttribute="top" secondItem="Ano-uy-zdd" secondAttribute="bottom" constant="25" id="qhw-jc-3XM"/>
-                            <constraint firstItem="jnd-fT-9fd" firstAttribute="leading" secondItem="QZO-q2-FwZ" secondAttribute="leading" constant="120" id="yIK-Zc-gmk"/>
+                            <constraint firstItem="QZO-q2-FwZ" firstAttribute="trailing" secondItem="Yfc-7a-Uxb" secondAttribute="trailing" constant="20" id="SuF-0V-aDq"/>
+                            <constraint firstItem="Yfc-7a-Uxb" firstAttribute="centerY" secondItem="dU6-Ly-6L8" secondAttribute="centerY" id="xWE-1b-ZIR"/>
+                            <constraint firstItem="Yfc-7a-Uxb" firstAttribute="leading" secondItem="QZO-q2-FwZ" secondAttribute="leading" constant="20" id="xad-oZ-36t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QZO-q2-FwZ"/>
                     </view>
@@ -383,9 +411,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="designer.jpeg" width="48" height="48"/>
-        <image name="modeller.jpeg" width="32" height="32"/>
-        <image name="programmer.jpeg" width="52" height="52"/>
+        <image name="designer" width="48" height="48"/>
+        <image name="modeller" width="32" height="32"/>
+        <image name="programmer" width="52" height="52"/>
         <image name="sadface.png" width="450" height="450"/>
         <image name="trophy.jpg" width="56.759998321533203" height="56.880001068115234"/>
     </resources>

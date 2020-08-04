@@ -48,8 +48,4 @@ class MainViewController: UIViewController {
         
     }
     
-    @IBAction func goHome(_ segue: UIStoryboardSegue) {
-        
-    }
-    
 }
