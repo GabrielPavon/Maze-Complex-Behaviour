@@ -10,6 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let smallSize = 7
+    let mediumSize = 15
+    let bigSize = 25
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +33,20 @@ class MainViewController: UIViewController {
     }
     */
 
+    @IBAction func changeSize(_ sender: UISegmentedControl) {
+        
+        switch (sender.selectedSegmentIndex) {
+        case 0:
+            ViewController.MAZE_SIDE = smallSize
+        case 1:
+            ViewController.MAZE_SIDE = mediumSize
+        case 2:
+            ViewController.MAZE_SIDE = bigSize
+        default:
+            print("Error, no size selected")
+        }
+        
+    }
     
     @IBAction func goHome(_ segue: UIStoryboardSegue) {
         

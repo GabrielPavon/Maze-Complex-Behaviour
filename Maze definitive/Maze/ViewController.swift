@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, MazeViewDataSource {
     let model = Global.model
-    static let MAZE_SIDE = 19
+    static var MAZE_SIDE = 19
     
     @IBOutlet weak var mazeView: MazeView!
     
@@ -40,6 +40,12 @@ class ViewController: UIViewController, MazeViewDataSource {
         
         model.run()
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        model.loadedModel = "none"
+        model.reset()
+        print("Test: im calling viewdiddissapear")
     }
     
     @objc func receiveAction() {
@@ -86,14 +92,17 @@ class ViewController: UIViewController, MazeViewDataSource {
         
         switch sender.direction {
         case .up:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -1))
+            for _ in 0..<2 {
+                maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: -1))}
         case .right:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 1))
+            for _ in 0..<2 {
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: 1))}
         case .down:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows:1))
+            for _ in 0..<2 {
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(rows: 1))}
         case .left:
-            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -1))
-        
+            for _ in 0..<2 {
+            maze.movePlayer(maze.player, to: maze.player.getPos().moved(columns: -1))}
         default:
             print("Swipe None")
         }

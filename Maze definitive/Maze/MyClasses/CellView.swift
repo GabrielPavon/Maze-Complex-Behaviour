@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CellView: UIView {
+class CellView: UIImageView {
     var id = "-1"
     var type = "none"
     var color = "black"
@@ -27,9 +27,7 @@ class CellView: UIView {
     var pathLeft = false
     var neighbourLeft: String? 
     
-    //override func draw(_ rect: CGRect) {
-     //   <#code#>
-    //}
+
     
     func assignNeighbours (_ subViews: [UIView]) {
         var neighbourY1: CGFloat = 0.0

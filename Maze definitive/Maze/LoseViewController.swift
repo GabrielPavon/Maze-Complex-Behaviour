@@ -26,11 +26,6 @@ class LoseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-
-    @IBAction func tryAgain(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
     
 }
 

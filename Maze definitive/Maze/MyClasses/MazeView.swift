@@ -51,7 +51,7 @@ class MazeView: UIView {
     var finishColor: UIColor! = UIColor.orange
     
     @IBInspectable
-    var borderColor: UIColor! = UIColor.red
+    var borderColor: UIColor! = UIColor.black
     
     @IBInspectable
     var playerColor: UIColor! = UIColor.yellow
@@ -72,6 +72,10 @@ class MazeView: UIView {
     var fakeDataSource = FakeDataSource()
     
     class FakeDataSource: MazeViewDataSource {
+        func bottleneckCellFor(_ mazeView: MazeView) -> Position {
+            return Position(row:3,column:3)
+        }
+        
         func numberOfRowsFor(_ mazeView: MazeView) -> Int { return 6}
         func numberOfColumnsFor(_ mazeView: MazeView) -> Int { return 6}
         func isOpenCellFor(_ mazeView: MazeView, at position: Position) -> Bool {return true}
@@ -172,13 +176,18 @@ class MazeView: UIView {
         let origin = position2CGPoint(Position.zero).moved(dx: CGFloat(-lineWidth/2), dy: CGFloat(-lineWidth/2))
         let size = CGSize(width: cellSize*CGFloat(columns) + CGFloat(lineWidth),
                           height: cellSize*CGFloat(rows) + CGFloat(lineWidth))
+        
+        
+        UIImage(named: "darkstone.jpg")!.draw(in: CGRect(origin: origin, size: size))
+
         let path = UIBezierPath(rect: CGRect(origin: origin, size: size))
         
         path.lineWidth = CGFloat(lineWidth)
         borderColor.setStroke()
         closedColor.setFill()
-        path.fill()
+       // path.fill()
         path.stroke()
+ 
     }
     
     // checks and stores the adjacent paths
@@ -319,6 +328,13 @@ class MazeView: UIView {
                 view.color = "black"
             }
             
+            if pos != dataSource.startCellFor(mazeview) && pos != dataSource.finishCellFor(mazeview) {
+                view.image = UIImage(named: "grass.jpeg")
+                view.contentMode = .scaleToFill
+                view.clipsToBounds = true
+            }
+            
+
             mazeview.updateCellViewPaths(view, pos)
             
             view.id = pos.toId()

@@ -26,8 +26,5 @@ class WinViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func playAgain(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
+    
 }
