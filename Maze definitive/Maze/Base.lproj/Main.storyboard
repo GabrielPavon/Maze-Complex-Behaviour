@@ -318,7 +318,7 @@
                                     <segue destination="GVQ-wu-b6l" kind="unwind" unwindAction="goHome:" id="3Id-XU-M67"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="trophy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xc2-DI-yxP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="xc2-DI-yxP">
                                 <rect key="frame" x="60" y="180" width="265" height="287"/>
                             </imageView>
                         </subviews>
@@ -367,7 +367,7 @@
                                     <segue destination="MRR-m3-VJp" kind="unwind" unwindAction="goHome:" id="nVJ-99-mwd"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="sadface.png" translatesAutoresizingMaskIntoConstraints="NO" id="rZV-s4-yKx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="sadface" translatesAutoresizingMaskIntoConstraints="NO" id="rZV-s4-yKx">
                                 <rect key="frame" x="67" y="259" width="240" height="128"/>
                             </imageView>
                         </subviews>
@@ -414,7 +414,7 @@
         <image name="designer" width="48" height="48"/>
         <image name="modeller" width="32" height="32"/>
         <image name="programmer" width="52" height="52"/>
-        <image name="sadface.png" width="450" height="450"/>
-        <image name="trophy.jpg" width="56.759998321533203" height="56.880001068115234"/>
+        <image name="sadface" width="600" height="600"/>
+        <image name="trophy" width="473" height="474"/>
     </resources>
 </document>
